@@ -15,41 +15,146 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Beetle Tasklist</title>
   </head>
   <body>
+  
+<body id="body">
 
 <!-- Nav bar -->
-<nav class="navbar navbar-expand-sm fixed-top">
-    <a class="active" href="#home">Beetle List</a>
-    <button class="navbar-toggler" data-toggle="collapse" data-target="#">
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">Beetle</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <!-- Links -->
-      <ul class="navbar-nav ml-auto">
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#help">Help<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#work">Work</a>
+          <a class="nav-link" href="#help">Calendar</a>
         </li>
-        </ul>
+      </ul>
+      <!-- Search bar within Nav bar -->
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+      </form>
     </div>
   </nav>
-
   <!-- end Nav bar -->
 
   <!-- Cards -->
- <div id="cards" class="container w-25 bg-light" style="margin-top: 100px;">
-           <h2>Task List</h2>
-        <div class="card">
-          <div class="card-body">Basic card</div>
-        </div>
+<div class="card-deck mx-auto my-sm-3 w-75">
+    <div class="card">
+        <div class="card-body">
+        <h5 class="card-title">Task List</h5>
+        <p class="card-text"></p>
       </div>
- </div>
-    
-    <!-- End Cards -->
+      <div class="card-footer">
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="add" placeholder="Add Task" aria-label="Search">
+            <button class="btn my-2 my-sm-0" type="submit"><i class="fa fa-bug"></i></button>
+          </form>
+      </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+        <h5 class="card-title">Task List</h5>
+        <p class="card-text"></p>
+      </div>
+      <div class="card-footer">
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="add" placeholder="Add Task" aria-label="Search">
+            <button class="btn my-2 my-sm-0" type="submit"><i class="fa fa-bug"></i></button>
+          </form>
+      </div>
+    </div>
+  </div>
+
+<!-- End Cards -->
+
+<!-- Calendar -->
+<table>
+    <thead>
+      <tr>
+        <th class="arrow"><a href="">◀</a></th>
+        <th colspan="5">
+          July 2020
+        </th>
+        <th class="arrow"><a href="">▶</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+        <th>Sun</th>
+      </tr>
+      <tr>
+        <td class="off">26</td>
+        <td class="off">27</td>
+        <td class="off">28</td>
+        <td class="off">29</td>
+        <td class="off">30</td>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+        <td>16</td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td class="last-week">18</td>
+        <td>19</td>
+        <td>20</td>
+        <td>21</td>
+        <td>22</td>
+        <td>23</td>
+      </tr>
+      <tr>
+        <td>24</td>
+        <td class="today">25</td>
+        <td class="tomorrow">26</td>
+        <td>27</td>
+        <td class="event">28</td>
+        <td>29</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>31</td>
+        <td class="off">1</td>
+        <td class="off">2</td>
+        <td class="off">3</td>
+        <td class="off">4</td>
+        <td class="off">5</td>
+        <td class="off">6</td>
+      </tr>
+    </tbody>
+  </table>
+<!-- End Calendar -->
 
 <!-- Start Modal -->
     <!-- Button to Open the Modal -->
@@ -81,6 +186,7 @@
       </div>
     </div>
  <!-- End Modal -->
+ 
   </div>
 </body>
 </html>
