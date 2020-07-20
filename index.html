@@ -19,6 +19,68 @@
   </head>
   <body>
 
+<!-- Nav bar -->
+<nav class="navbar navbar-expand-sm fixed-top">
+    <a class="active" href="#home">Beetle List</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <!-- Links -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#work">Work</a>
+        </li>
+        </ul>
+    </div>
+  </nav>
 
+  <!-- end Nav bar -->
+
+  <!-- Cards -->
+ <div id="cards" class="container w-25 bg-light" style="margin-top: 100px;">
+           <h2>Task List</h2>
+        <div class="card">
+          <div class="card-body">Basic card</div>
+        </div>
+      </div>
+ </div>
+    
+    <!-- End Cards -->
+
+<!-- Start Modal -->
+    <!-- Button to Open the Modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button>
+  
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+ <!-- End Modal -->
+  </div>
 </body>
 </html>
