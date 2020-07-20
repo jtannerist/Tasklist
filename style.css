@@ -1,26 +1,73 @@
- /* --- top navigation --- */
+ /* ---  body & page background colour --- */
+#body {
+    background-color: rgba(57, 177, 121, 0.685);
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* --- end body & page background colour --- */
+
+ /* --- start nav bar --- */
  .navbar {
-    overflow: hidden;
-    background-color: rgba(24, 22, 22, 0.658);
-    
+    background-color: rgba(57, 177, 121, 0.685);
   }
-  
-  .navbar a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+
+  .navbar-brand {
+    color:white;
+    font-weight: bold;
+}
+
+  .nav-link {
+      color:white;
   }
-  
+     
   .navbar a:hover {
-    background-color: rgba(142, 199, 156, 0.61);
     color: black;
   }
-  
-  .navbar a.active {
-    background-color: #4eac75a4;
-    color: white;
+   
+.form-inline .btn {
+    background: rgb(212, 172, 41);
+    border: none;
+    cursor: pointer;
+
   }
-/* --- end top navigation --- */
+
+.form-inline .btn button:hover {
+    background: rgb(110, 81, 189);
+  }
+    
+  /* --- end nav bar --- */
+
+  /* --- Start Cards --- */
+  .card-deck {
+      float: left
+  }
+ /* --- end Cards --- */
+
+ /* --- Start Calendar --- */
+
+ thead {
+     color: rgb(214, 48, 159);
+
+ }
+  table {
+    background-color: rgb(238, 223, 196);
+    -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+    -ms-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+    -o-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+    border-spacing: 0;
+    margin: 2em auto;
+    position: relative;
+    width: 239px;
+}
+
+table thead th.arrow a {
+    color: rgb(0, 0, 0);
+    }
+
+table thead th.arrow a:hover { 
+    color: rgb(214, 48, 159) 
+}
+
+ /* --- End Calendar --- */
