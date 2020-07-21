@@ -137,5 +137,16 @@
   @media screen and (max-width: 290px) {
     .weekdays li, .days li {width: 12.2%;}
   }
+/* --- end top navigation --- */
 
+/* --- Edit Task modal --- */
+
+.modal-header, h4, .close {
+  background-color: #5cb85c;
+  color:white !important;
+  text-align: center;
+  font-size: 30px;
+}
+/* --- end Edit Task modal --- */
  /* --- End Calendar --- */
+
