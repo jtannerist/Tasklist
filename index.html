@@ -54,14 +54,26 @@
     <h5 class="card-title">Task List</h5>
     <p class="card-text">
       <ul class="list-group">
-        <li class="list-group-item">Cras justo odio<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
-          Edit Task
+        <li class="list-group-item">Cras justo odio
+ <!-- Buttons -->
+ <span class="pull-right">          
+          <button type="button" class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#demo">View</button>
+          <div id="demo" class="collapse">
+            <ul style="list-style-type:disc;">
+            <li>Assignee: Rachel</li>
+            <li>Status: Doing</li>
+            <li>Description: Lorem ipsum dolor sit amet.</li>
+            <li>Due: 12/09/2020</li>
+            </ul>
+          </div>
+          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModaledit">Edit
         </button>
-        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal2">Delete Task</button>
+        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModaldelete">Delete</button>
+      </button>
+</span>      
+  <!-- End Buttons -->     
 
-        <!-- Delete Task Modal -->
-        <div class="modal fade" id="myModal2" role="dialog">
-          <div class="modal-dialog modal-sm"></li>
+        </li>
         <li class="list-group-item">Finish Wireframe</li>
         <li class="list-group-item">Create HTML file</li>
         <li class="list-group-item">Create CSS file</li>
@@ -69,10 +81,13 @@
       </ul>
     </p>
   </div>
+  
+  <!-- Card footer -->    
   <div class="card-footer">
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="add" placeholder="Add Task" aria-label="Search">
-        <button class="btn my-2 my-sm-0" data-toggle="modal" data-target="#myModal"><i class="fa fa-bug"></i></button>     
+
+        <button type="button" class="btn my-2 my-sm-0" data-toggle="modal" data-target="#myModaladd"><i class="fa fa-bug"></i></button>     
       </form>
   </div>
 </div>
@@ -147,52 +162,40 @@
 
 
  <!-- Start Delete Task Modal -->
-
-<!-- Delete Task Modal Button-->
- <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal2">Delete Task</button>
-
- <!-- Delete Task Modal -->
- <div class="modal fade" id="myModal2" role="dialog">
-   <div class="modal-dialog modal-sm">
-     <div class="modal-content bg-light">
-       <div class="modal-header">
-         <h4 class="modal-title">Delete Task</h4>
-       </div>
-       <div class="modal-body">
-         <p>Are you sure you want to delete this task?</p>
-       </div>
-       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button> 
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>  
-       </div>
-     </div>
-   </div>
- </div>
+<div class="modal fade" id="myModaldelete" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content bg-light">
+      <div class="modal-header">
+        <h4 class="modal-title">Delete Task</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this task?</p>
+      </div>
+      <div class="modal-footer">
+       <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button> 
+       <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>  
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
 <!-- End Delete Task Modal-->
 
 
-
-
-<!-- Start Edit Task Modal -->
-    <!-- Button to Open the Modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-        Edit Task
-      </button>
-      
-<!-- Edit Task Modal - background colour is in <div class=modal-content bg-light>-->
-      <div class="modal fade" id="myModal">
+<!-- Start Add Task Modal -->     
+<!-- Add Task Modal - background colour is in <div class=modal-content bg-light>-->
+      <div class="modal fade" id="myModaladd">
         <div class="modal-dialog">
           <div class="modal-content bg-light">
       
-<!-- Edit Task Modal Header - styling in CSS file -->
+<!-- Add Task Modal Header - styling in CSS file -->
             <div class="modal-header">
-              <h4 class="modal-title">Edit Task</h4>
+              <h4 class="modal-title">Add Task</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
       
-<!-- Edit Task Modal Task Name -->
+<!-- Add Task Modal Task Name -->
             <form>
                 <br>
                 <div class="form-group col-sm-12">
@@ -200,7 +203,7 @@
                     <textarea class="form-control" id="task-name" placeholder="Enter Task Name" rows="1"></textarea>
                   </div>
 
-<!-- Edit Task Modal Assignee -->
+<!-- Add Task Modal Assignee -->
 
                   <div class="form-group col-sm-12">
                     <label for="task-status">Assignee</label>
@@ -210,7 +213,7 @@
                     </select>
                   </div> 
 
-<!-- Edit Task Modal Status -->
+<!-- Add Task Modal Status -->
 
                   <div class="form-group col-sm-12">
                     <label for="task-status">Status</label>
@@ -221,14 +224,14 @@
                     </select>
                   </div>
 
-<!-- Edit Task Modal Task Description -->
+<!-- Add Task Modal Task Description -->
 
                   <div class="form-group col-sm-12">
                     <label for="TaskDescription">Task Description</label>
                     <textarea class="form-control" id="Task-description" rows="3" placeholder="Enter Task Description"></textarea>
                   </div>
 
-<!-- Edit Task Modal Due Date -->
+<!-- Add Task Modal Due Date -->
 
                   <div class="form-group col-sm-12">
                     <label for="due-date" class="col-form-label">Due</label>
@@ -237,7 +240,7 @@
                 
               </form>
       
-<!-- Modal Edit Task footer -->
+<!-- Modal Add Task footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal">Save</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
@@ -245,8 +248,13 @@
       
           </div>
         </div>
-<!-- End Edit Task Modal -->
- 
+<!-- End Add Task Modal -->
+
+
+
+
+
+
   </div>
 </body>
 </html>
