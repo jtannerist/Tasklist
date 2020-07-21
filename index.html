@@ -48,43 +48,41 @@
   <!-- end Nav bar -->
 
   <!-- Cards -->
-<div class="card-deck mx-auto my-sm-3 w-75">
-    <div class="card">
-        <div class="card-body">
-        <h5 class="card-title">Task List</h5>
-        <p class="card-text"></p>
-      </div>
-      <div class="card-footer">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="add" placeholder="Add Task" aria-label="Search">
-            <button class="btn my-2 my-sm-0" type="submit"><i class="fa fa-bug"></i></button>
-          </form>
-      </div>
-    </div>
-    <div class="card">
-        <div class="card-body">
-        <h5 class="card-title">Task List</h5>
-        <p class="card-text"></p>
-      </div>
-      <div class="card-footer">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="add" placeholder="Add Task" aria-label="Search">
-            <button class="btn my-2 my-sm-0" type="submit"><i class="fa fa-bug"></i></button>
-          </form>
-      </div>
+  <div class="card-deck mx-auto my-sm-3 w-50">
+  <div class="card">
+    <div class="card-body">
+    <h5 class="card-title">Task List</h5>
+    <p class="card-text">
+      <ul class="list-group">
+        <li class="list-group-item">Cras justo odio<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+          Edit Task
+        </button>
+        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal2">Delete Task</button>
+
+        <!-- Delete Task Modal -->
+        <div class="modal fade" id="myModal2" role="dialog">
+          <div class="modal-dialog modal-sm"></li>
+        <li class="list-group-item">Finish Wireframe</li>
+        <li class="list-group-item">Create HTML file</li>
+        <li class="list-group-item">Create CSS file</li>
+        <li class="list-group-item">Create JavaScript file</li>
+      </ul>
+    </p>
+  </div>
+  <div class="card-footer">
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="add" placeholder="Add Task" aria-label="Search">
+        <button class="btn my-2 my-sm-0" data-toggle="modal" data-target="#myModal"><i class="fa fa-bug"></i></button>     
+      </form>
+  </div>
+</div>
+    
     </div>
   </div>
 
 <!-- End Cards -->
 
-<div class="card mx-auto my-sm-3 w-25">
-  <div class="card-footer">
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="add" placeholder="Add New List" aria-label="Search">
-        <button class="btn my-2 my-sm-0" type="submit"><i class="fa fa-bug"></i></button>
-      </form>
-  </div>
-</div>
+
 
 <!-- Calendar -->
 <div class="calendar"> 
