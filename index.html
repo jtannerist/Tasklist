@@ -8,46 +8,45 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <title>Beetle Tasklist</title>
   </head>
-  <body>
-  
+
 <body id="body">
 
 <!-- Nav bar -->
 <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#">Beetle</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#help">Help<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#help">Calendar</a>
-        </li>
-      </ul>
-      <!-- Search bar within Nav bar -->
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-      </form>
-    </div>
-  </nav>
-  <!-- end Nav bar -->
+  <a class="navbar-brand" href="#"><i class="fa fa-bug"></i>Beetle</a>
+  <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+<!-- Nav bar link options-->
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Calendar <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+    </ul>
+<!-- Nav bar search bar-->
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <button id=search class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</nav>
+<!-- End Nav bar -->
 
-  <!-- Cards -->
+<!-- Cards -->
   <div class="card-deck mx-auto my-sm-3 w-50">
   <div class="card">
     <div class="card-body">
@@ -55,8 +54,8 @@
     <p class="card-text">
       <ul class="list-group">
         <li class="list-group-item">Cras justo odio
- <!-- Buttons -->
- <span class="pull-right">          
+<!-- Buttons -->
+  <span class="pull-right">          
           <button type="button" class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#demo">View</button>
           <div id="demo" class="collapse">
             <ul style="list-style-type:disc;">
@@ -82,7 +81,7 @@
     </p>
   </div>
   
-  <!-- Card footer -->    
+<!-- Card footer -->    
   <div class="card-footer">
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="add" placeholder="Add Task" aria-label="Search">
