@@ -25,7 +25,7 @@
 }
 
 #search {
-  background: rgb(230, 188, 52);
+  background: rgb(252, 209, 71);
   border: none;
   cursor: pointer;
 }
@@ -42,6 +42,26 @@
 /* --- Start Cards --- */
 .card-deck {
   float: left;
+}
+
+#addtaskbug {
+  background: rgba(189, 93, 157, 0.753);
+  border: none;
+}
+
+.btn.view {
+  background: rgb(93, 146, 189);
+  border: none;
+}
+
+.btn.edit {
+  background: rgb(232, 235, 79);
+  border: none;
+}
+
+.btn.trash {
+  background: rgb(211, 67, 74);
+  border: none;
 }
 
 /* --- end Cards --- */
@@ -67,7 +87,7 @@ ul {
 .month {
   padding: 15px 25px;
   width: 100%;
-  background: #e76633d7;
+  background: #f7723dd7;
   text-align: center;
 }
 
@@ -152,20 +172,23 @@ ul {
     width: 12.2%;
   }
 }
-/* --- end top navigation --- */
+/* --- end Calendar --- */
 
 /* --- Edit Task modal --- */
 
 .modal-header,
-h4,
 .close {
-  background-color: #5cb85c;
+  background-color: rgb(189, 93, 157);
   color: white !important;
   text-align: center;
   font-size: 30px;
 }
+
+.modal-header.delete {
+  background: rgb(211, 67, 74);
+}
+
 /* --- end Edit Task modal --- */
-/* --- End Calendar --- */
 
 /* --- Start Footer --- */
 
@@ -301,6 +324,11 @@ section {
   color: #5c666b;
 }
 
+#contactustext {
+  font-size: 18px;
+  border: none;
+  color: white;
+}
 .footer-distributed form input {
   height: 55px;
   margin-bottom: 15px;
@@ -308,7 +336,7 @@ section {
 
 .footer-distributed form textarea {
   height: 100px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .footer-distributed form button {
@@ -316,7 +344,7 @@ section {
   background-color: #33383b;
   color: #ffffff;
   border: 0;
-  padding: 15px 50px;
+  padding: 8px 35px;
   font-weight: bold;
   float: right;
 }
@@ -325,7 +353,7 @@ section {
 
 @media (max-width: 1000px) {
   .footer-distributed {
-    font: bold 14px sans-serif;
+    font: bold 14px;
   }
 
   .footer-distributed .footer-company-name {
@@ -338,7 +366,7 @@ section {
   }
 
   .footer-distributed form button {
-    padding: 10px 35px;
+    padding: 8px 35px;
   }
 }
 
@@ -355,7 +383,7 @@ section {
   }
 
   .footer-distributed .footer-left {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
 
   .footer-distributed form {

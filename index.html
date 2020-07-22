@@ -41,7 +41,7 @@
 <!-- Nav bar search bar-->
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      <button id=search class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+      <button id="search" class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div>
 </nav>
@@ -57,7 +57,7 @@
         <li class="list-group-item">Cras justo odio
 <!-- Buttons -->
   <span class="pull-right">          
-          <button type="button" class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#demo">View</button>
+          <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo">View</button>
           <div id="demo" class="collapse">
             <ul style="list-style-type:disc;">
             <li>Assignee: Rachel</li>
@@ -66,9 +66,9 @@
             <li>Due: 12/09/2020</li>
             </ul>
           </div>
-          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModaledit">Edit
+          <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#myModaledit"><i class="fa fa-pencil"></i>
         </button>
-        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModaldelete">Delete</button>
+        <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#myModaldelete"><i class="fa fa-trash"></i></button>
       </button>
 </span>      
   <!-- End Buttons -->     
@@ -86,17 +86,15 @@
   <div class="card-footer">
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="add" placeholder="Add Task" aria-label="Search">
-
-        <button type="button" class="btn my-2 my-sm-0" data-toggle="modal" data-target="#myModaladd"><i class="fa fa-bug"></i></button>     
+        <button id="addtaskbug" type="button" class="btn my-2 my-sm-0" data-toggle="modal" data-target="#myModaladd"><i class="fa fa-bug"></i></button>     
       </form>
   </div>
 </div>
-    
+
     </div>
   </div>
 
 <!-- End Cards -->
-
 
 
 <!-- Calendar -->
@@ -165,7 +163,7 @@
 <div class="modal fade" id="myModaldelete" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content bg-light">
-      <div class="modal-header">
+      <div class="modal-header delete">
         <h4 class="modal-title">Delete Task</h4>
       </div>
       <div class="modal-body">
@@ -275,7 +273,7 @@
     </div>
   </div>
   <div id=contact class="footer-right">
-    <p>Contact Us</p>
+    <h5 id="contactustext">Contact Us</h5>
     <form action="#" method="post">
       <input type="text" name="email" placeholder="Email">
       <textarea name="message" placeholder="Message"></textarea>
