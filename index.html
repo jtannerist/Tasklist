@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="Javascript.js"></script>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -31,7 +32,7 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <a class="nav-link" href="#">Calendar <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#" onclick="myFunction()">Calendar <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#contact">Contact</a>
@@ -99,7 +100,7 @@
 
 
 <!-- Calendar -->
-<div class="calendar"> 
+<div id="myDIV" class="calendar"> 
     <div class="month">      
         <ul>
           <li class="prev">&#10094;</li>
@@ -256,7 +257,7 @@
 <!-- Start Footer -->
 <footer class="footer-distributed">
   <div class="footer-left">
-    <h3>Beetle<span><i class="fa fa-bug"></i></span></h3>
+    <h3><span><i class="fa fa-bug"></i></span>Beetle</h3>
     <p class="footer-links">
       <a href="#">Top</a>
       ·
