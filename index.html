@@ -4,50 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="Javascript.js"></script>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <title>Beetle Tasklist</title>
   </head>
-  <body>
-  
+
 <body id="body">
 
 <!-- Nav bar -->
 <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#">Beetle</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#help">Help<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#help">Calendar</a>
-        </li>
-      </ul>
-      <!-- Search bar within Nav bar -->
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-      </form>
-    </div>
-  </nav>
-  <!-- end Nav bar -->
+  <a class="navbar-brand" href="#"><i class="fa fa-bug"></i>Beetle</a>
+  <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+<!-- Nav bar link options-->
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="#" onclick="myFunction()">Calendar <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contact">Contact</a>
+      </li>
+    </ul>
+<!-- Nav bar search bar-->
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <button id="search" class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</nav>
+<!-- End Nav bar -->
 
-  <!-- Cards -->
+<!-- Cards -->
   <div class="card-deck mx-auto my-sm-3 w-50">
   <div class="card">
     <div class="card-body">
@@ -55,9 +55,9 @@
     <p class="card-text">
       <ul class="list-group">
         <li class="list-group-item">Cras justo odio
- <!-- Buttons -->
- <span class="pull-right">          
-          <button type="button" class="btn btn-primary btn-sm" data-toggle="collapse" data-target="#demo">View</button>
+<!-- Buttons -->
+  <span class="pull-right">          
+          <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo">View</button>
           <div id="demo" class="collapse">
             <ul style="list-style-type:disc;">
             <li>Assignee: Rachel</li>
@@ -66,9 +66,9 @@
             <li>Due: 12/09/2020</li>
             </ul>
           </div>
-          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModaledit">Edit
+          <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#myModaledit"><i class="fa fa-pencil"></i>
         </button>
-        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModaldelete">Delete</button>
+        <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#myModaldelete"><i class="fa fa-trash"></i></button>
       </button>
 </span>      
   <!-- End Buttons -->     
@@ -82,25 +82,26 @@
     </p>
   </div>
   
-  <!-- Card footer -->    
+<!-- Card footer -->    
   <div class="card-footer">
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="add" placeholder="Add Task" aria-label="Search">
 
         <button type="button" class="btn my-2 my-sm-0" data-toggle="modal" data-target="#myModaladd"><i class="fa fa-bug"></i></button>     
+        <input class="form-control mr-sm-2" type="add" placeholder="Add Task" aria-label="Search">
+        <button id="addtaskbug" type="button" class="btn my-2 my-sm-0" data-toggle="modal" data-target="#myModaladd"><i class="fa fa-bug"></i></button>     
       </form>
   </div>
 </div>
-    
+
     </div>
   </div>
 
 <!-- End Cards -->
 
 
-
 <!-- Calendar -->
-<div class="calendar"> 
+<div id="myDIV" class="calendar"> 
     <div class="month">      
         <ul>
           <li class="prev">&#10094;</li>
@@ -165,7 +166,7 @@
 <div class="modal fade" id="myModaldelete" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content bg-light">
-      <div class="modal-header">
+      <div class="modal-header delete">
         <h4 class="modal-title">Delete Task</h4>
       </div>
       <div class="modal-body">
@@ -251,10 +252,39 @@
       </div>
     </div>
 <!-- End Add Task Modal -->
-
-
-
-
   </div>
+
+
 </body>
+
+
+<!-- Start Footer -->
+<footer class="footer-distributed">
+  <div class="footer-left">
+    <h3><span><i class="fa fa-bug"></i></span>Beetle</h3>
+    <p class="footer-links">
+      <a href="#">Top</a>
+      ·
+      <a href="#">Calendar</a>
+      ·
+      <a href="#search">Search</a>
+      ·
+    </p>
+    <p class="footer-company-name">Jessica & Rachel © 2020</p>
+    <div class="footer-icons">
+      <a href="#"><i class="fa fa-facebook"></i></a>
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-linkedin"></i></a>
+      <a href="#"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+  <div id=contact class="footer-right">
+    <h5 id="contactustext">Contact Us</h5>
+    <form action="#" method="post">
+      <input type="text" name="email" placeholder="Email">
+      <textarea name="message" placeholder="Message"></textarea>
+      <button>Send</button>
+    </form>
+  </div>
+</footer>
 </html>
