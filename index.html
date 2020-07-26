@@ -57,8 +57,8 @@
         <li class="list-group-item">Cras justo odio
 <!-- Buttons -->
   <span class="pull-right">          
-          <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo">View</button>
-          <div id="demo" class="collapse">
+          <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo1"><i class="fa fa-eye" aria-hidden="true"></i></button>
+          <div id="demo1" class="collapse">
             <ul style="list-style-type:disc;">
             <li>Assignee: Rachel</li>
             <li>Status: Doing</li>
@@ -74,10 +74,84 @@
   <!-- End Buttons -->     
 
         </li>
-        <li class="list-group-item">Finish Wireframe</li>
-        <li class="list-group-item">Create HTML file</li>
-        <li class="list-group-item">Create CSS file</li>
-        <li class="list-group-item">Create JavaScript file</li>
+        <li class="list-group-item">Finish Wireframe
+          <!-- Buttons -->
+  <span class="pull-right">          
+    <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo2"><i class="fa fa-eye" aria-hidden="true"></i></button>
+    <div id="demo2" class="collapse">
+      <ul style="list-style-type:disc;">
+      <li>Assignee: Rachel</li>
+      <li>Status: Doing</li>
+      <li>Description: Lorem ipsum dolor sit amet.</li>
+      <li>Due: 12/09/2020</li>
+      </ul>
+    </div>
+    <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#myModaledit"><i class="fa fa-pencil"></i>
+  </button>
+  <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#myModaldelete"><i class="fa fa-trash"></i></button>
+</button>
+</span>      
+<!-- End Buttons --> 
+        </li>
+
+        <li class="list-group-item">Create HTML file
+          <!-- Buttons -->
+  <span class="pull-right">          
+    <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo3"><i class="fa fa-eye" aria-hidden="true"></i></button>
+    <div id="demo3" class="collapse">
+      <ul style="list-style-type:disc;">
+      <li>Assignee: Rachel</li>
+      <li>Status: Doing</li>
+      <li>Description: Create HTML file.</li>
+      <li>Due: 12/09/2020</li>
+      </ul>
+    </div>
+    <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#myModaledit"><i class="fa fa-pencil"></i>
+  </button>
+  <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#myModaldelete"><i class="fa fa-trash"></i></button>
+</button>
+</span>      
+<!-- End Buttons --> 
+        </li>
+
+        <li class="list-group-item">Create CSS file
+          <!-- Buttons -->
+  <span class="pull-right">          
+    <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo4"><i class="fa fa-eye" aria-hidden="true"></i></button>
+    <div id="demo4" class="collapse">
+      <ul style="list-style-type:disc;">
+      <li>Assignee: Jess</li>
+      <li>Status: Doing</li>
+      <li>Description: Create CSS file.</li>
+      <li>Due: 12/09/2020</li>
+      </ul>
+    </div>
+    <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#myModaledit"><i class="fa fa-pencil"></i>
+  </button>
+  <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#myModaldelete"><i class="fa fa-trash"></i></button>
+</button>
+</span>      
+<!-- End Buttons --> 
+        </li>
+        <li class="list-group-item">Create JavaScript file
+          <!-- Buttons -->
+  <span class="pull-right">          
+    <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo5"><i class="fa fa-eye" aria-hidden="true"></i></button>
+    <div id="demo5" class="collapse">
+      <ul style="list-style-type:disc;">
+      <li>Assignee: Jess</li>
+      <li>Status: Doing</li>
+      <li>Description: Create JavaScript file.</li>
+      <li>Due: 12/09/2020</li>
+      </ul>
+    </div>
+    <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#myModaledit"><i class="fa fa-pencil"></i>
+  </button>
+  <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#myModaldelete"><i class="fa fa-trash"></i></button>
+</button>
+</span>      
+<!-- End Buttons --> 
+        </li>
       </ul>
     </p>
   </div>
@@ -85,9 +159,7 @@
 <!-- Card footer -->    
   <div class="card-footer">
     <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="add" placeholder="Add Task" aria-label="Search">
-        <button id="addtaskbug" type="button" class="btn my-2 my-sm-0" data-toggle="modal" data-target="#myModaladd"><i class="fa fa-bug"></i></button>     
-
+        <button id="addtaskbug" type="button" class="btn btn-block my-2 my-sm-0" data-toggle="modal" data-target="#myModaladd"><i class="fa fa-bug"></i> Add Task</button>     
       </form>
   </div>
 </div>
@@ -252,6 +324,73 @@
 <!-- End Add Task Modal -->
   </div>
 
+
+  <!-- Start Edit Task Modal -->     
+<!-- Edit Task Modal - background colour is in <div class=modal-content bg-light>-->
+  <div class="modal fade" id="myModaledit">
+    <div class="modal-dialog">
+      <div class="modal-content bg-light">
+  
+<!-- Edit Task Modal Header - styling in CSS file -->
+        <div class="modal-header">
+          <h4 class="modal-title">Edit Task</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+<!-- Edit Task Modal Task Name -->
+        <form>
+            <br>
+            <div class="form-group col-sm-12">
+                <label for="task-name">Task Name</label>
+                <textarea class="form-control" id="task-name" placeholder="Enter Task Name" rows="1"></textarea>
+              </div>
+
+<!-- Edit Task Modal Assignee -->
+
+              <div class="form-group col-sm-12">
+                <label for="task-status">Assignee</label>
+                <select class="form-control" id="task-status">
+                  <option>Rachel</option>
+                  <option>Jess</option>
+                </select>
+              </div> 
+
+<!-- Edit Task Modal Status -->
+
+              <div class="form-group col-sm-12">
+                <label for="task-status">Status</label>
+                <select class="form-control" id="task-status">
+                  <option>To-do</option>
+                  <option>Doing</option>
+                  <option>Done</option>
+                </select>
+              </div>
+
+<!-- Edit Task Modal Task Description -->
+
+              <div class="form-group col-sm-12">
+                <label for="TaskDescription">Task Description</label>
+                <textarea class="form-control" id="Task-description" rows="3" placeholder="Enter Task Description"></textarea>
+              </div>
+
+<!-- Edit Task Modal Due Date -->
+
+              <div class="form-group col-sm-12">
+                <label for="due-date" class="col-form-label">Due</label>
+                  <input class="form-control" type="datetime-local" value="2020-08-19T13:45:00" id="due-date">
+            </div> 
+          </form>
+  
+<!-- Modal Edit Task footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+  
+      </div>
+    </div>
+<!-- End Edit Task Modal -->
+  </div>
 
 </body>
 
