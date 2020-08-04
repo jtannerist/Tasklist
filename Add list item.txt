@@ -1,0 +1,31 @@
+
+https://www.educative.io/courses/learn-html-css-javascript-from-scratch/JYEwVPx4X1v
+
+Event listeners
+
+<html>
+ <head>
+   <title></title>
+ </head>
+ <body>
+   <h1>To-Do List</h1>
+   <ul id="todoList">
+    <li>Get Eggs</li>
+   </ul>
+   <label for="todo">
+     <h3>New To-Do</h3>
+   </label>
+   <input type="text" id="todo" name="todo" placeholder="Write your To-Do here">
+   <button id="addTodo">Add</button>
+ </body>
+</html>
+
+
+var todoList = document.getElementById('todoList');
+var additems = document.getElementById('addTodo');
+additems.onclick = function(){
+    var li = document.createElement('li');
+    li.innerHTML = document.getElementById("todo").value;
+    todoList.appendChild(li);
+    document.getElementById("todo").value = " ";
+}
