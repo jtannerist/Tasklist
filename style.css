@@ -2,7 +2,7 @@
 #body {
   background-color: #1abc9c;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
 }
 /* --- end body & page background colour --- */
 
@@ -25,7 +25,7 @@
 }
 
 #search {
-  background: rgb(252, 209, 71);
+  background: rgb(190, 216, 105);
   border: none;
   cursor: pointer;
 }
@@ -40,6 +40,11 @@
 /* --- end nav bar --- */
 
 /* --- Start Cards --- */
+
+#card-header-form {
+  text-align: center;
+  border: none;
+}
 .card-deck {
   float: left;
 }
@@ -50,17 +55,16 @@
 }
 
 .btn.view {
-  background: rgb(93, 146, 189);
+  background: rgb(102, 161, 209);
   border: none;
 }
-
 .btn.edit {
-  background: rgb(232, 235, 79);
+  background: rgb(238, 216, 89);
   border: none;
 }
 
 .btn.trash {
-  background: rgb(211, 67, 74);
+  background: rgb(158, 155, 155);
   border: none;
 }
 

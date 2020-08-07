@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- CSS link -->
     <link rel="stylesheet" href="style.css" />
+<!-- Favicon link -->
+    <link rel="icon" type="image/png" href="favicon.png"/>
+<!-- Google font link -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
 <!-- Bootstrap links -->
     <link
       rel="stylesheet"
@@ -55,16 +59,21 @@
 <div class="card-deck mx-auto my-sm-3">
     <!-- First (Card) Task List  -->
   <div class="card">
+    <div class="card-header">
+      <form class="form-inline my-2 my-lg-0">    
+      <input id="card-header-form" class="form-control mr-sm-2" type="text" placeholder="Enter List Title">
+      <!-- <span class="pull-right">  -->
+      <button id="addTaskBug" type="button" class="btn my-2 my-sm-0" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-bug"></i></button>     
+    <!-- </span> -->
+  </form>
+    </div>
     <div class="card-body">
-    <h5 class="card-title">Task List</h5>
-
-    <p class="card-text">
-      <ul id="listOfCards" class="list-group">
+           <ul id="listOfCards" class="list-group">
 
         <!-- First (Card) Task  -->     
-        <!-- <li class="list-group-item" id="taskCard">Task Example
-  View button and details of task -->
-  <!-- <span class="pull-right">          
+        <li class="list-group-item" id="taskCard">Task Example
+  <!-- View button and details of task --> 
+   <span class="pull-right">          
           <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo1"><i class="fa fa-eye" aria-hidden="true"></i></button>
           <div id="demo1" class="collapse">
             <ul style="list-style-type:disc;">
@@ -73,15 +82,15 @@
             <li>Description: Lorem ipsum dolor sit amet.</li>
             <li>Due: 12/09/2020</li>
             </ul>
-          </div>
-          Edit Task button that opens Modal -->
-          <!-- <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
-        </button> -->
+          </div> 
+         <!-- Edit Task button that opens Modal -->
+          <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
+        </button> 
         <!-- Delete Task button that opens Modal -->
-        <!-- <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
+       <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
       </button>
 </span>  
-</li>     -->
+</li>     
   <!-- End of First (Card) Task -->     
       </ul>
   <!-- </div> -->
@@ -285,5 +294,6 @@
 
 <!-- Javascript link -->
 <script src="myscript.js"></script>
+
 </body>
 </html>
