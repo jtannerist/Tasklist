@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- CSS link -->
     <link rel="stylesheet" href="style.css" />
-    <script src="Javascript.js"></script>
+<!-- Bootstrap links -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -14,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    
+<!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <title>Beetle Tasklist</title>
@@ -170,68 +171,6 @@
 <!-- End Cards -->
 
 
-<!-- Calendar -->
-<div id="myDIV" class="calendar"> 
-    <div class="month">      
-        <ul>
-          <li class="prev">&#10094;</li>
-          <li class="next">&#10095;</li>
-          <li>
-            July<br>
-            <span style="font-size:18px">2020</span>
-          </li>
-        </ul>
-      </div>
-      
-      <ul class="weekdays">
-        <li>Mo</li>
-        <li>Tu</li>
-        <li>We</li>
-        <li>Th</li>
-        <li>Fr</li>
-        <li>Sa</li>
-        <li>Su</li>
-      </ul>
-      
-      <ul class="days">  
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
-        <li>9</li>
-        <li><span class="active">10</span></li>
-        <li>11</li>
-        <li>12</li>
-        <li>13</li>
-        <li>14</li>
-        <li>15</li>
-        <li>16</li>
-        <li>17</li>
-        <li>18</li>
-        <li>19</li>
-        <li>20</li>
-        <li>21</li>
-        <li>22</li>
-        <li>23</li>
-        <li>24</li>
-        <li>25</li>
-        <li>26</li>
-        <li>27</li>
-        <li>28</li>
-        <li>29</li>
-        <li>30</li>
-        <li>31</li>
-      </ul>
-</div>  
-<!-- End Calendar -->
-
-
-
-
  <!-- Start Delete Task Modal -->
 <div class="modal fade" id="myModaldelete" role="dialog">
   <div class="modal-dialog modal-sm">
@@ -273,7 +212,8 @@
             <br>
             <div class="form-group col-sm-12">
                 <label for="task-name">Task Name</label>
-                <textarea class="form-control" id="task-name" placeholder="Enter Task Name" rows="1"></textarea>
+                <textarea class="taskName form-control" id="task-name" placeholder="Enter Task Name" rows="1"></textarea>
+                <span id="TaskNameErrMsg"></span>
               </div>
 
 <!-- Add Task Modal Assignee -->
@@ -281,6 +221,7 @@
               <div class="form-group col-sm-12">
                 <label for="task-status">Assignee</label>
                 <select class="form-control" id="task-status">
+                  <option></option>
                   <option>Rachel</option>
                   <option>Jess</option>
                 </select>
@@ -291,6 +232,7 @@
               <div class="form-group col-sm-12">
                 <label for="task-status">Status</label>
                 <select class="form-control" id="task-status">
+                  <option></option>
                   <option>To-do</option>
                   <option>Doing</option>
                   <option>Done</option>
@@ -301,21 +243,22 @@
 
               <div class="form-group col-sm-12">
                 <label for="TaskDescription">Task Description</label>
-                <textarea class="form-control" id="Task-description" rows="3" placeholder="Enter Task Description"></textarea>
+                <textarea class="taskDescription form-control" id="Task-description" rows="3" placeholder="Enter Task Description"></textarea>
+                <span id="taskDescriptionErrMsg"></span>
               </div>
 
 <!-- Add Task Modal Due Date -->
 
               <div class="form-group col-sm-12">
                 <label for="due-date" class="col-form-label">Due</label>
-                  <input class="form-control" type="datetime-local" value="2020-08-19T13:45:00" id="due-date">
+                  <input class="form-control" type="dateTime-local" value="2020-08-19" id="due-date">
             </div>
             
           </form>
   
 <!-- Modal Add Task footer -->
         <div class="modal-footer">
-            <button type="button" class="btn btn-info" data-dismiss="modal">Save</button>
+            <button type="button" class="btnAddTaskSave btn btn-info" data-dismiss="modal">Save</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
   
@@ -424,4 +367,8 @@
     </form>
   </div>
 </footer>
+
+<!-- Javascript link -->
+<script src="Javascript.js"></script>
+
 </html>
