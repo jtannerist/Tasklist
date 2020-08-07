@@ -44,15 +44,15 @@ class TaskList {
     let displayHtml = "";
     //alert(displayHtml);
     for (let i = 0; i < this.tasks.length; i++) {
-      displayHtml = `<li class="list-group-item" id="taskCard">${tasks[0].taskName}
+      displayHtml = `<li class="list-group-item" id="taskCard">${this.tasks[i].taskName}
     <span class="pull-right">          
             <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo1"><i class="fa fa-eye" aria-hidden="true"></i></button>
             <div id="demo1" class="collapse">
               <ul style="list-style-type:disc;">
-              <li>Assignee: ${tasks[0].assignee}</li>
-              <li>Status: ${tasks[0].status}</li>
-              <li>Description: ${tasks[0].description}</li>
-              <li>Due: ${tasks[0].dueDate}</li>
+              <li>Assignee: ${this.tasks[i].assignee}</li>
+              <li>Status: ${this.tasks[i].status}</li>
+              <li>Description: ${this.tasks[i].description}</li>
+              <li>Due: ${this.tasks[i].dueDate}</li>
               </ul>
             </div>
             <!-- Edit Task button that opens Modal -->
@@ -140,6 +140,7 @@ btnAddTaskSave.onclick = function () {
       dueDate.value
     );
     $("#modalAdd").modal("hide");
+    displayTaskList(); //called the display function (from function displayTaskList() {)
   }
 };
 
