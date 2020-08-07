@@ -23,7 +23,8 @@
 
 <body id="body">
 
-<!-- Nav bar -->
+
+<!-- START Nav bar -->
 <nav class="navbar navbar-expand-lg">
   <a class="navbar-brand" href="#"><i class="fa fa-bug"></i>Beetle</a>
   <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,18 +47,24 @@
     </form>
   </div>
 </nav>
-<!-- End Nav bar -->
+<!-- END Nav bar -->
 
-<!-- Cards -->
-  <div class="card-deck mx-auto my-sm-3 w-50">
+
+<!-- START card Deck -->
+
+<div class="card-deck mx-auto my-sm-3">
+    <!-- First (Card) Task List  -->
   <div class="card">
     <div class="card-body">
     <h5 class="card-title">Task List</h5>
+
     <p class="card-text">
-      <ul class="list-group">
-        <li class="list-group-item">Cras justo odio
-<!-- Buttons -->
-  <span class="pull-right">          
+      <ul id="listOfCards" class="list-group">
+
+        <!-- First (Card) Task  -->     
+        <!-- <li class="list-group-item" id="taskCard">Task Example
+  View button and details of task -->
+  <!-- <span class="pull-right">          
           <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo1"><i class="fa fa-eye" aria-hidden="true"></i></button>
           <div id="demo1" class="collapse">
             <ul style="list-style-type:disc;">
@@ -67,112 +74,38 @@
             <li>Due: 12/09/2020</li>
             </ul>
           </div>
-          <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#myModaledit"><i class="fa fa-pencil"></i>
-        </button>
-        <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#myModaldelete"><i class="fa fa-trash"></i></button>
+          Edit Task button that opens Modal -->
+          <!-- <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
+        </button> -->
+        <!-- Delete Task button that opens Modal -->
+        <!-- <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
       </button>
-</span>      
-  <!-- End Buttons -->     
-
-        </li>
-        <li class="list-group-item">Finish Wireframe
-          <!-- Buttons -->
-  <span class="pull-right">          
-    <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo2"><i class="fa fa-eye" aria-hidden="true"></i></button>
-    <div id="demo2" class="collapse">
-      <ul style="list-style-type:disc;">
-      <li>Assignee: Rachel</li>
-      <li>Status: Doing</li>
-      <li>Description: Lorem ipsum dolor sit amet.</li>
-      <li>Due: 12/09/2020</li>
+</span>  
+</li>     -->
+  <!-- End of First (Card) Task -->     
       </ul>
-    </div>
-    <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#myModaledit"><i class="fa fa-pencil"></i>
-  </button>
-  <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#myModaldelete"><i class="fa fa-trash"></i></button>
-</button>
-</span>      
-<!-- End Buttons --> 
-        </li>
-
-        <li class="list-group-item">Create HTML file
-          <!-- Buttons -->
-  <span class="pull-right">          
-    <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo3"><i class="fa fa-eye" aria-hidden="true"></i></button>
-    <div id="demo3" class="collapse">
-      <ul style="list-style-type:disc;">
-      <li>Assignee: Rachel</li>
-      <li>Status: Doing</li>
-      <li>Description: Create HTML file.</li>
-      <li>Due: 12/09/2020</li>
-      </ul>
-    </div>
-    <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#myModaledit"><i class="fa fa-pencil"></i>
-  </button>
-  <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#myModaldelete"><i class="fa fa-trash"></i></button>
-</button>
-</span>      
-<!-- End Buttons --> 
-        </li>
-
-        <li class="list-group-item">Create CSS file
-          <!-- Buttons -->
-  <span class="pull-right">          
-    <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo4"><i class="fa fa-eye" aria-hidden="true"></i></button>
-    <div id="demo4" class="collapse">
-      <ul style="list-style-type:disc;">
-      <li>Assignee: Jess</li>
-      <li>Status: Doing</li>
-      <li>Description: Create CSS file.</li>
-      <li>Due: 12/09/2020</li>
-      </ul>
-    </div>
-    <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#myModaledit"><i class="fa fa-pencil"></i>
-  </button>
-  <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#myModaldelete"><i class="fa fa-trash"></i></button>
-</button>
-</span>      
-<!-- End Buttons --> 
-        </li>
-        <li class="list-group-item">Create JavaScript file
-          <!-- Buttons -->
-  <span class="pull-right">          
-    <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo5"><i class="fa fa-eye" aria-hidden="true"></i></button>
-    <div id="demo5" class="collapse">
-      <ul style="list-style-type:disc;">
-      <li>Assignee: Jess</li>
-      <li>Status: Doing</li>
-      <li>Description: Create JavaScript file.</li>
-      <li>Due: 12/09/2020</li>
-      </ul>
-    </div>
-    <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#myModaledit"><i class="fa fa-pencil"></i>
-  </button>
-  <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#myModaldelete"><i class="fa fa-trash"></i></button>
-</button>
-</span>      
-<!-- End Buttons --> 
-        </li>
-      </ul>
+  <!-- </div> -->
     </p>
   </div>
-  
-<!-- Card footer -->    
+<!-- End of Tasks --> 
+
+<!-- Card footer that has Add Task Button -->    
   <div class="card-footer">
     <form class="form-inline my-2 my-lg-0">
-        <button id="addtaskbug" type="button" class="btn btn-block my-2 my-sm-0" data-toggle="modal" data-target="#myModaladd"><i class="fa fa-bug"></i> Add Task</button>     
+        <button id="addTaskBug" type="button" class="btn btn-block my-2 my-sm-0" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-bug"></i> Add Task</button>     
       </form>
   </div>
 </div>
-
-    </div>
+  
   </div>
+</div>
+    
 
-<!-- End Cards -->
+<!-- END card Deck -->
 
 
- <!-- Start Delete Task Modal -->
-<div class="modal fade" id="myModaldelete" role="dialog">
+<!-- START Delete Task Modal -->
+<div class="modal fade" id="modalDelete" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content bg-light">
       <div class="modal-header delete">
@@ -189,88 +122,69 @@
   </div>
 </div>
 </div>
-
-<!-- End Delete Task Modal-->
-
+<!-- END Delete Task Modal-->
 
 
-
-<!-- Start Add Task Modal -->     
-<!-- Add Task Modal - background colour is in <div class=modal-content bg-light>-->
-  <div class="modal fade" id="myModaladd">
+<!-- START Add Task Modal -->     
+  <div class="modal fade" id="modalAdd">
     <div class="modal-dialog">
       <div class="modal-content bg-light">
-  
-<!-- Add Task Modal Header - styling in CSS file -->
+        <!-- Add Task Modal Header - styling in CSS file -->
         <div class="modal-header">
           <h4 class="modal-title">Add Task</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-  
-<!-- Add Task Modal Task Name -->
+        <!-- Add Task Modal Task Name -->
         <form>
             <br>
             <div class="form-group col-sm-12">
                 <label for="task-name">Task Name</label>
-                <textarea class="taskName form-control" id="task-name" placeholder="Enter Task Name" rows="1"></textarea>
-                <span id="TaskNameErrMsg"></span>
+                <textarea class="taskName form-control" id="taskName" placeholder="Enter Task Name" rows="1"></textarea>
+                <span id="taskNameErrMsg"></span>
               </div>
-
-<!-- Add Task Modal Assignee -->
-
+              <!-- Add Task Modal Assignee -->
               <div class="form-group col-sm-12">
-                <label for="task-status">Assignee</label>
-                <select class="form-control" id="task-status">
-                  <option></option>
-                  <option>Rachel</option>
-                  <option>Jess</option>
-                </select>
+                <label for="task-assignee">Assignee</label>
+                <textarea class="assignee form-control" id="assignee" placeholder="Assignee Name" rows="1"></textarea>
+                <span id="taskAssigneeErrMsg"></span>
               </div> 
-
-<!-- Add Task Modal Status -->
-
+              <!-- Add Task Modal Status -->
               <div class="form-group col-sm-12">
                 <label for="task-status">Status</label>
-                <select class="form-control" id="task-status">
+                <select class="form-control" id="taskStatus">
                   <option></option>
                   <option>To-do</option>
                   <option>Doing</option>
                   <option>Done</option>
                 </select>
               </div>
-
-<!-- Add Task Modal Task Description -->
-
+              <!-- Add Task Modal Task Description -->
               <div class="form-group col-sm-12">
-                <label for="TaskDescription">Task Description</label>
-                <textarea class="taskDescription form-control" id="Task-description" rows="3" placeholder="Enter Task Description"></textarea>
+                <label for="taskDescription">Task Description</label>
+                <textarea class="taskDescription form-control" id="taskDescription" rows="3" placeholder="Enter Task Description"></textarea>
                 <span id="taskDescriptionErrMsg"></span>
               </div>
-
-<!-- Add Task Modal Due Date -->
-
+              <!-- Add Task Modal Due Date -->
               <div class="form-group col-sm-12">
                 <label for="due-date" class="col-form-label">Due</label>
-                  <input class="form-control" type="dateTime-local" value="2020-08-19" id="due-date">
+                  <input class="form-control" type="dateTime-local" value="2020-08-19" id="dueDate">
             </div>
-            
-          </form>
-  
-<!-- Modal Add Task footer -->
+          </form>  
+        <!-- Modal Add Task footer -->
         <div class="modal-footer">
-            <button type="button" class="btnAddTaskSave btn btn-info" data-dismiss="modal">Save</button>
+            <button id="btnAddTaskSave" type="button" class="btnAddTaskSave btn btn-info">Save</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
-  
       </div>
     </div>
-<!-- End Add Task Modal -->
-  </div>
+<!-- END Add Task Modal -->
+</div>
 
 
-  <!-- Start Edit Task Modal -->     
+
+  <!-- START Edit Task Modal -->     
 <!-- Edit Task Modal - background colour is in <div class=modal-content bg-light>-->
-  <div class="modal fade" id="myModaledit">
+  <div class="modal fade" id="modalEdit">
     <div class="modal-dialog">
       <div class="modal-content bg-light">
   
@@ -285,14 +199,14 @@
             <br>
             <div class="form-group col-sm-12">
                 <label for="task-name">Task Name</label>
-                <textarea class="form-control" id="task-name" placeholder="Enter Task Name" rows="1"></textarea>
+                <textarea class="form-control" id="taskName" placeholder="Enter Task Name" rows="1"></textarea>
               </div>
 
 <!-- Edit Task Modal Assignee -->
 
               <div class="form-group col-sm-12">
                 <label for="task-status">Assignee</label>
-                <select class="form-control" id="task-status">
+                <select class="form-control" id="taskStatus">
                   <option>Rachel</option>
                   <option>Jess</option>
                 </select>
@@ -302,7 +216,7 @@
 
               <div class="form-group col-sm-12">
                 <label for="task-status">Status</label>
-                <select class="form-control" id="task-status">
+                <select class="form-control" id="taskStatus">
                   <option>To-do</option>
                   <option>Doing</option>
                   <option>Done</option>
@@ -313,14 +227,14 @@
 
               <div class="form-group col-sm-12">
                 <label for="TaskDescription">Task Description</label>
-                <textarea class="form-control" id="Task-description" rows="3" placeholder="Enter Task Description"></textarea>
+                <textarea class="form-control" id="taskDescription" rows="3" placeholder="Enter Task Description"></textarea>
               </div>
 
 <!-- Edit Task Modal Due Date -->
 
               <div class="form-group col-sm-12">
                 <label for="due-date" class="col-form-label">Due</label>
-                  <input class="form-control" type="datetime-local" value="2020-08-19T13:45:00" id="due-date">
+                  <input class="form-control" type="datetime-local" value="2020-08-19T13:45:00" id="dueDate">
             </div> 
           </form>
   
@@ -335,9 +249,9 @@
 <!-- End Edit Task Modal -->
   </div>
 
-</body>
 
-<!-- Start Footer -->
+
+<!-- START Footer -->
 <footer class="footer-distributed">
   <div class="footer-left">
     <h3><span><i class="fa fa-bug"></i></span>Beetle</h3>
@@ -358,8 +272,8 @@
     </div>
 
   </div>
-  <div id=contact class="footer-right">
-    <h5 id="contactustext">Contact Us</h5>
+  <div id="contact" class="footer-right">
+    <h5 id="contactUsText">Contact Us</h5>
     <form action="#" method="post">
       <input type="text" name="email" placeholder="Email">
       <textarea name="message" placeholder="Message"></textarea>
@@ -367,8 +281,9 @@
     </form>
   </div>
 </footer>
+<!-- END Footer -->
 
 <!-- Javascript link -->
-<script src="Javascript.js"></script>
-
+<script src="myscript.js"></script>
+</body>
 </html>
