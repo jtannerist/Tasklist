@@ -94,7 +94,7 @@
 
 /* --- Edit Task modal --- */
 
-.modal-header,
+#addModalHeader,
 .close {
   background-color: rgb(189, 93, 157);
   color: white !important;
@@ -108,6 +108,21 @@
 
 /* --- end Edit Task modal --- */
 
+/* --- Add Task modal --- */
+
+.form-group {
+  display: flex;
+}
+/* --- End Add Task modal --- */
+
+#taskNameErrMsg,
+#taskAssigneeErrMsg,
+#taskDescriptionErrMsg {
+  font-size: 10px;
+  position: relative;
+  left: 130px;
+  bottom: 20px;
+}
 /* --- Start Footer --- */
 
 .footer-distributed {
