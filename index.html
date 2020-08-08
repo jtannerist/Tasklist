@@ -37,12 +37,16 @@
 <!-- Nav bar link options-->
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li >
+        <a id="date" class="nav-link" href="#date"></a>
+          </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" onclick="myFunction()">Calendar <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Calendar <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#contact">Contact</a>
       </li>
+      
     </ul>
 <!-- Nav bar search bar-->
     <form class="form-inline my-2 my-lg-0">
@@ -73,7 +77,7 @@
         <li class="list-group-item" id="taskCard">Task Example
           <div id="demo1" class="collapse">
             <ul style="list-style-type:disc;">
-            <li>Assignee: Rachel</li>
+            <li">Assignee: Rachel</li>
             <li>Status: Doing</li>
             <li>Description: Lorem ipsum dolor sit amet.</li>
             <li>Due: 12/09/2020</li>
@@ -278,18 +282,17 @@
     </p>
     <p class="footer-company-name">Jessica & Rachel © 2020</p>
     <div class="footer-icons">
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-linkedin"></i></a>
-      <a href="#"><i class="fa fa-github"></i></a>
+      <a href="https://www.facebook.com/rachel.uberti" target="_blank"><i class="fa fa-facebook"></i></a>
+      <a href="https://www.linkedin.com/in/rachel-uberti-561bb9166/" target="_blank"><i class="fa fa-linkedin"></i></a>
+      <a href="https://github.com/RachelUberti" target="_blank"><i class="fa fa-github"></i></a>
     </div>
 
   </div>
   <div id="contact" class="footer-right">
     <h5 id="contactUsText">Contact Us</h5>
-    <form action="#" method="post">
-      <input type="text" name="email" placeholder="Email">
-      <textarea name="message" placeholder="Message"></textarea>
+    <form action="mailto:info@beetletasklist.com" method="post" enctype="text/plain">
+      <input type="email" name="Your Email " placeholder="Your email">
+      <textarea name="Your Message " placeholder="Message"></textarea>
       <button>Send</button>
     </form>
   </div>

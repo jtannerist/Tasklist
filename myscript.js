@@ -56,21 +56,17 @@ class TaskList {
         </ul>
       </div> 
       </div>
-<!-- View button and details of task --> 
 <div class="taskBox col-sm-4 pr-0 pl-0">
 <span class="pull-right">          
       <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo1"><i class="fa fa-eye" aria-hidden="true"></i></button>
-      
-     <!-- Edit Task button that opens Modal -->
       <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
     </button> 
-    <!-- Delete Task button that opens Modal -->
-   <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
+  <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
   </button>
 </span>  
 </li> 
 </div>
-</div>  `;
+</div> `;
     }
     return displayHtml;
   }
@@ -94,7 +90,7 @@ const taskList = new TaskList(); // Creates an instance of class BookList. Sets 
 
 // END: SET CLASSES FOR TASKS & TASKLIST //
 
-// START: ADD TASK VALIDATION - on Task Name & Task Description //
+// START: ADD TASK VALIDATION //
 // Set variables //
 let btnAddTaskSave = document.querySelector("#btnAddTaskSave");
 let taskName = document.querySelector("#taskName");
@@ -118,7 +114,7 @@ btnAddTaskSave.onclick = function () {
   ) {
     // alert("inside if");
     taskNameErrMsg.innerHTML =
-      "Please enter a Task Name longer than 8 characters";
+      "Please enter a task name longer than 8 characters";
     taskNameErrMsg.style.color = "#ff0000";
     taskName.style.borderColor = "#ff0000";
     taskAssigneeErrMsg.innerHTML = "Please enter an assignee";
@@ -147,16 +143,18 @@ btnAddTaskSave.onclick = function () {
       taskDescription.value,
       dueDate.value
     );
-    $("#modalAdd").modal("hide");
+    $("#modalAdd").modal("hide"); // hides the modal once data filled out //
     displayTaskList(); //called the display function (from function displayTaskList() {)
   }
 };
 
+// once validation alerts users something is wrong, this changes feedback on a change of input //
+
+//Task Name on change validation //
 taskName.onchange = function () {
   if (taskName.value == "" || taskName.value.length < 8) {
-    // alert("inside if");
     taskNameErrMsg.innerHTML =
-      "Please enter a Task Name longer than 8 characters";
+      "Please enter a task name longer than 8 characters";
     taskNameErrMsg.style.color = "#ff0000";
     taskName.style.borderColor = "#ff0000";
   } else {
@@ -166,11 +164,10 @@ taskName.onchange = function () {
   }
 };
 
-taskName.onchange = function () {
-  if (taskName.value == "" || taskName.value.length < 8) {
-    // alert("inside if");
-    taskAssigneeErrMsg.innerHTML =
-      "Please enter a Task Name longer than 8 characters";
+//Assignee on change validation //
+assignee.onchange = function () {
+  if (assignee.value == "") {
+    taskAssigneeErrMsg.innerHTML = "Please enter an assignee";
     taskAssigneeErrMsg.style.color = "#ff0000";
     assignee.style.borderColor = "#ff0000";
   } else {
@@ -180,23 +177,23 @@ taskName.onchange = function () {
   }
 };
 
-taskName.onchange = function () {
-  if (taskName.value == "" || taskName.value.length < 8) {
-    // alert("inside if");
-    taskAssigneeErrMsg.innerHTML =
-      "Please enter a Task Name longer than 8 characters";
-    taskAssigneeErrMsg.style.color = "#ff0000";
-    assignee.style.borderColor = "#ff0000";
+//Task Description on change validation //
+taskDescription.onchange = function () {
+  if (taskDescription.value == "") {
+    taskDescription.innerHTML =
+      "Please enter a task description longer than 8 characters";
+    taskDescriptionErrMsg.style.color = "#ff0000";
+    taskDescription.style.borderColor = "#ff0000";
   } else {
-    taskAssigneeErrMsg.innerHTML = "Looks good!";
-    taskAssigneeErrMsg.style.color = "#66CDAA";
-    assignee.style.borderColor = "#66CDAA";
+    taskDescriptionErrMsg.innerHTML = "Looks good!";
+    taskDescriptionErrMsg.style.color = "#66CDAA";
+    taskDescription.style.borderColor = "#66CDAA";
   }
 };
 
-// ADD OBJECT TO ARRAY - adding a new task
+// START: ADD OBJECT TO ARRAY - adding a new task //
 
-//Display tasks catching it
+// Display tasks
 function displayTaskList() {
   let listOfCards = document.querySelector("#listOfCards");
   const displayHtml = taskList.displayListHtml();
@@ -204,3 +201,14 @@ function displayTaskList() {
   let documentFragment = range.createContextualFragment(displayHtml);
   listOfCards.appendChild(documentFragment);
 }
+
+// START: Show todays date in Navbar //
+
+const dateElement = document.getElementById("date");
+
+const options = { weekday: "long", month: "short", day: "numeric" };
+const today = new Date();
+
+dateElement.innerHTML = today.toLocaleDateString("en-US", options);
+
+// END: todays date in Navbar //
