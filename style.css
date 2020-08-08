@@ -25,7 +25,7 @@
 }
 
 #search {
-  background: rgb(190, 216, 105);
+  background: rgb(182, 216, 155);
   border: none;
   cursor: pointer;
 }
@@ -44,9 +44,26 @@
 #card-header-form {
   text-align: center;
   border: none;
+  color: black;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  background-color: rgba(0, 0, 0, 0) !important;
+  text-transform: uppercase;
 }
 .card-deck {
   float: left;
+}
+
+#taskCard.list-group-item {
+  border: none;
+  padding: 2px;
+}
+
+.cardTask {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  padding: 5px;
 }
 
 #addTaskBug {

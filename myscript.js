@@ -44,25 +44,33 @@ class TaskList {
     let displayHtml = "";
     //alert(displayHtml);
     for (let i = 0; i < this.tasks.length; i++) {
-      displayHtml = `<li class="list-group-item" id="taskCard">${this.tasks[i].taskName}
-    <span class="pull-right">          
-            <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo1"><i class="fa fa-eye" aria-hidden="true"></i></button>
-            <div id="demo1" class="collapse">
-              <ul style="list-style-type:disc;">
-              <li>Assignee: ${this.tasks[i].assignee}</li>
-              <li>Status: ${this.tasks[i].status}</li>
-              <li>Description: ${this.tasks[i].description}</li>
-              <li>Due: ${this.tasks[i].dueDate}</li>
-              </ul>
-            </div>
-            <!-- Edit Task button that opens Modal -->
-            <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
-          </button>
-          <!-- Delete Task button that opens Modal -->
-          <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
-        </button>
-  </span>  
-  </li>  `;
+      displayHtml = `<div class="row cardTask mx-0 my-1">
+      <div class="col-sm-8 pl-0 pr-3">     
+    <li class="list-group-item" id="taskCard">${this.tasks[i].taskName}
+      <div id="demo1" class="collapse">
+        <ul style="list-style-type:disc;">
+        <li>Assignee: ${this.tasks[i].assignee}</li>
+        <li>Status: ${this.tasks[i].status}</li>
+        <li>Description: ${this.tasks[i].description}</li>
+        <li>Due: ${this.tasks[i].dueDate}</li>
+        </ul>
+      </div> 
+      </div>
+<!-- View button and details of task --> 
+<div class="taskBox col-sm-4 pr-0 pl-0">
+<span class="pull-right">          
+      <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo1"><i class="fa fa-eye" aria-hidden="true"></i></button>
+      
+     <!-- Edit Task button that opens Modal -->
+      <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
+    </button> 
+    <!-- Delete Task button that opens Modal -->
+   <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
+  </button>
+</span>  
+</li> 
+</div>
+</div>  `;
     }
     return displayHtml;
   }
@@ -158,38 +166,33 @@ taskName.onchange = function () {
   }
 };
 
-// change for assignee & description
-// taskName.onchange = function () {
-//   if (taskName.value == "" || taskName.value.length < 8) {
-//     // alert("inside if");
-//     taskAssigneeErrMsg.innerHTML =
-//       "Please enter a Task Name longer than 8 characters";
-//     taskAssigneeErrMsg.style.color = "#ff0000";
-//     assignee.style.borderColor = "#ff0000";
-//   } else {
-//     taskAssigneeErrMsg.innerHTML = "Looks good!";
-//     taskAssigneeErrMsg.style.color = "#66CDAA";
-//     assignee.style.borderColor = "#66CDAA";
-//   }
-// };
+taskName.onchange = function () {
+  if (taskName.value == "" || taskName.value.length < 8) {
+    // alert("inside if");
+    taskAssigneeErrMsg.innerHTML =
+      "Please enter a Task Name longer than 8 characters";
+    taskAssigneeErrMsg.style.color = "#ff0000";
+    assignee.style.borderColor = "#ff0000";
+  } else {
+    taskAssigneeErrMsg.innerHTML = "Looks good!";
+    taskAssigneeErrMsg.style.color = "#66CDAA";
+    assignee.style.borderColor = "#66CDAA";
+  }
+};
 
-// taskName.onchange = function () {
-//   if (taskName.value == "" || taskName.value.length < 8) {
-//     // alert("inside if");
-//     taskAssigneeErrMsg.innerHTML =
-//       "Please enter a Task Name longer than 8 characters";
-//     taskAssigneeErrMsg.style.color = "#ff0000";
-//     assignee.style.borderColor = "#ff0000";
-//   } else {
-//     taskAssigneeErrMsg.innerHTML = "Looks good!";
-//     taskAssigneeErrMsg.style.color = "#66CDAA";
-//     assignee.style.borderColor = "#66CDAA";
-//   }
-// };
-
-// add in Looks good message
-// $("#modalAdd").modal("hide");
-// add the values to the array
+taskName.onchange = function () {
+  if (taskName.value == "" || taskName.value.length < 8) {
+    // alert("inside if");
+    taskAssigneeErrMsg.innerHTML =
+      "Please enter a Task Name longer than 8 characters";
+    taskAssigneeErrMsg.style.color = "#ff0000";
+    assignee.style.borderColor = "#ff0000";
+  } else {
+    taskAssigneeErrMsg.innerHTML = "Looks good!";
+    taskAssigneeErrMsg.style.color = "#66CDAA";
+    assignee.style.borderColor = "#66CDAA";
+  }
+};
 
 // ADD OBJECT TO ARRAY - adding a new task
 

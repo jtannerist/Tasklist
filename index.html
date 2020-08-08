@@ -56,25 +56,21 @@
 
 <!-- START card Deck -->
 
-<div class="card-deck mx-auto my-sm-3">
+<div class="card-deck mx-auto my-sm-5">
     <!-- First (Card) Task List  -->
   <div class="card">
     <div class="card-header">
       <form class="form-inline my-2 my-lg-0">    
       <input id="card-header-form" class="form-control mr-sm-2" type="text" placeholder="Enter List Title">
-      <!-- <span class="pull-right">  -->
-      <button id="addTaskBug" type="button" class="btn my-2 my-sm-0" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-bug"></i></button>     
-    <!-- </span> -->
+            <button id="addTaskBug" type="button" class="btn my-2 my-sm-0" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-bug"></i></button>     
   </form>
     </div>
     <div class="card-body">
            <ul id="listOfCards" class="list-group">
-
-        <!-- First (Card) Task  -->     
+        <!-- First (Card) Task  -->
+        <!-- <div class="row cardTask mx-0 my-1">
+          <div class="col-sm-8 pl-0 pr-3">     
         <li class="list-group-item" id="taskCard">Task Example
-  <!-- View button and details of task --> 
-   <span class="pull-right">          
-          <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo1"><i class="fa fa-eye" aria-hidden="true"></i></button>
           <div id="demo1" class="collapse">
             <ul style="list-style-type:disc;">
             <li>Assignee: Rachel</li>
@@ -83,14 +79,22 @@
             <li>Due: 12/09/2020</li>
             </ul>
           </div> 
+          </div>
+  View button and details of task --> 
+  <!-- <div class="taskBox col-sm-4 pr-0 pl-0">
+   <span class="pull-right">          
+          <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo1"><i class="fa fa-eye" aria-hidden="true"></i></button>
+           -->
          <!-- Edit Task button that opens Modal -->
-          <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
-        </button> 
+          <!-- <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
+        </button>  -->
         <!-- Delete Task button that opens Modal -->
-       <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
+       <!-- <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
       </button>
 </span>  
-</li>     
+</li> 
+</div>
+</div>     --> 
   <!-- End of First (Card) Task -->     
       </ul>
   <!-- </div> -->
