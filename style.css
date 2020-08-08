@@ -25,7 +25,7 @@
 }
 
 #search {
-  background: rgb(182, 216, 155);
+  background: #b4c93f;
   border: solid 1px lightgrey;
   cursor: pointer;
 }
@@ -88,6 +88,23 @@
 
 .btn.trash {
   background: rgb(158, 155, 155);
+  border: none;
+}
+
+#newListFormInput {
+  text-align: left;
+  border: none;
+  color: rgb(83, 83, 83);
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  background-color: rgba(0, 0, 0, 0) !important;
+  /* text-transform: uppercase; */
+  font-weight: bold;
+}
+
+#addNewListBtn {
+  background: rgba(209, 126, 30, 0.795);
   border: none;
 }
 
