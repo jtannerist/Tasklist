@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- CSS link -->
+  <!-- CSS link -->
     <link rel="stylesheet" href="style.css" />
-<!-- Favicon link -->
+  <!-- Favicon link -->
     <link rel="icon" type="image/png" href="favicon.png"/>
-<!-- Google font link -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
-<!-- Bootstrap links -->
+  <!-- Google font link -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+  <!-- Bootstrap links -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -19,22 +19,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<!-- Font Awesome -->
+  <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <title>Beetle Tasklist</title>
   </head>
 
-<body id="body">
+  <body id="body">
 
 
-<!-- START Nav bar -->
-<nav class="navbar navbar-expand-lg">
+  <!-- START Nav bar -->
+  <nav class="navbar navbar-expand-lg">
   <a class="navbar-brand" href="#"><i class="fa fa-bug"></i>Beetle</a>
   <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-<!-- Nav bar link options-->
+  <!-- Nav bar link options-->
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li >
@@ -48,29 +48,33 @@
       </li>
       
     </ul>
-<!-- Nav bar search bar-->
-    <form class="form-inline my-2 my-lg-0">
+  <!-- Nav bar search bar-->
+  <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search">
       <button id="search" class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
     </form>
-  </div>
-</nav>
-<!-- END Nav bar -->
+  </div> 
+  </nav>
+  <!-- END Nav bar -->
 
 
-<!-- START card Deck -->
 
-<div class="card-deck mx-auto my-sm-5">
+  <!-- START card Deck -->
+
+  <div class="card-deck mx-auto my-sm-3">
     <!-- First (Card) Task List  -->
-  <div class="card">
+  <div class="card my-4">
     <div class="card-header">
-      <form class="form-inline my-2 my-lg-0">    
-      <input id="card-header-form" class="form-control mr-sm-2" type="text" placeholder="Enter List Title">
-            <button id="addTaskBug" type="button" class="btn my-2 my-sm-0" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-bug"></i></button>     
+      <div class="form-horizontal">
+      <form class="form-inline cardHeaderInline">    
+      <input id="card-header-form" class="form-control mr-sm-4 col-sm-9" type="text" placeholder="Enter List Title">
+            <button id="addTaskBug" type="button" class="btn my-2 col-sm-2" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-bug"></i></button>     
   </form>
+</div>
+
     </div>
     <div class="card-body">
-           <ul id="listOfCards" class="list-group">
+            <ul id="listOfCards" class="list-group">
         <!-- First (Card) Task  -->
         <!-- <div class="row cardTask mx-0 my-1">
           <div class="col-sm-8 pl-0 pr-3">     
@@ -86,43 +90,43 @@
           </div>
   View button and details of task --> 
   <!-- <div class="taskBox col-sm-4 pr-0 pl-0">
-   <span class="pull-right">          
+    <span class="pull-right">          
           <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo1"><i class="fa fa-eye" aria-hidden="true"></i></button>
-           -->
-         <!-- Edit Task button that opens Modal -->
+            -->
+          <!-- Edit Task button that opens Modal -->
           <!-- <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
         </button>  -->
         <!-- Delete Task button that opens Modal -->
-       <!-- <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
+        <!-- <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
       </button>
-</span>  
-</li> 
-</div>
-</div>     --> 
+  </span>  
+  </li> 
+  </div>
+  </div>     --> 
   <!-- End of First (Card) Task -->     
       </ul>
   <!-- </div> -->
     </p>
   </div>
-<!-- End of Tasks --> 
+  <!-- End of Tasks --> 
 
-<!-- Card footer that has Add Task Button -->    
+  <!-- Card footer that has Add Task Button -->    
   <div class="card-footer">
     <form class="form-inline my-2 my-lg-0">
         <button id="addTaskBug" type="button" class="btn btn-block my-2 my-sm-0" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-bug"></i> Add Task</button>     
       </form>
   </div>
-</div>
-  
   </div>
-</div>
+
+  </div>
+  </div>
     
 
-<!-- END card Deck -->
+  <!-- END card Deck -->
 
 
-<!-- START Delete Task Modal -->
-<div class="modal fade" id="modalDelete" role="dialog">
+  <!-- START Delete Task Modal -->
+  <div class="modal fade" id="modalDelete" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content bg-light">
       <div class="modal-header delete">
@@ -132,17 +136,17 @@
         <p>Are you sure you want to delete this task?</p>
       </div>
       <div class="modal-footer">
-       <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button> 
-       <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>  
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button> 
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>  
       </div>
     </div>
   </div>
-</div>
-</div>
-<!-- END Delete Task Modal-->
+  </div>
+  </div>
+  <!-- END Delete Task Modal-->
 
 
-<!-- START Add Task Modal -->     
+  <!-- START Add Task Modal -->     
   <div class="modal fade" id="modalAdd">
     <div class="modal-dialog">
       <div class="modal-content bg-light">
@@ -156,8 +160,8 @@
     <br>
     <div class="form-horizontal">
     <div class="form-group">
-                      <label class="col-sm-3" for="task-name">Task Name</label>
-                      <textarea class="taskName form-control col-sm-8" id="taskName" placeholder="Enter Task Name" rows="1"></textarea>
+        <label class="col-sm-3" for="task-name">Task Name</label>
+        <textarea class="taskName form-control col-sm-8" id="taskName" placeholder="Enter Task Name" rows="1"></textarea>
       </div>
       <span id="taskNameErrMsg"></span>
     </div>
@@ -204,82 +208,80 @@
         </div>
       </div>
     </div>
-<!-- END Add Task Modal -->
-</div>
-
-
-
-  <!-- START Edit Task Modal -->     
-<!-- Edit Task Modal - background colour is in <div class=modal-content bg-light>-->
-  <div class="modal fade" id="modalEdit">
-    <div class="modal-dialog">
-      <div class="modal-content bg-light">
-  
-<!-- Edit Task Modal Header - styling in CSS file -->
-        <div class="modal-header">
-          <h4 class="modal-title">Edit Task</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-  
-<!-- Edit Task Modal Task Name -->
-        <form>
-            <br>
-            <div class="form-group col-sm-12">
-                <label for="task-name">Task Name</label>
-                <textarea class="form-control" id="taskName" placeholder="Enter Task Name" rows="1"></textarea>
-              </div>
-
-<!-- Edit Task Modal Assignee -->
-
-              <div class="form-group col-sm-12">
-                <label for="task-status">Assignee</label>
-                <select class="form-control" id="taskStatus">
-                  <option>Rachel</option>
-                  <option>Jess</option>
-                </select>
-              </div> 
-
-<!-- Edit Task Modal Status -->
-
-              <div class="form-group col-sm-12">
-                <label for="task-status">Status</label>
-                <select class="form-control" id="taskStatus">
-                  <option>To-do</option>
-                  <option>Doing</option>
-                  <option>Done</option>
-                </select>
-              </div>
-
-<!-- Edit Task Modal Task Description -->
-
-              <div class="form-group col-sm-12">
-                <label for="TaskDescription">Task Description</label>
-                <textarea class="form-control" id="taskDescription" rows="3" placeholder="Enter Task Description"></textarea>
-              </div>
-
-<!-- Edit Task Modal Due Date -->
-
-              <div class="form-group col-sm-12">
-                <label for="due-date" class="col-form-label">Due</label>
-                  <input class="form-control" type="datetime-local" value="2020-08-19T13:45:00" id="dueDate">
-            </div> 
-          </form>
-  
-<!-- Modal Edit Task footer -->
-        <div class="modal-footer">
-            <button type="button" class="btn btn-info" data-dismiss="modal">Save</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-        </div>
-  
-      </div>
-    </div>
-<!-- End Edit Task Modal -->
+  <!-- END Add Task Modal -->
   </div>
 
 
 
-<!-- START Footer -->
-<footer class="footer-distributed">
+  <!-- START Edit Task Modal -->     
+  <!-- Edit Task Modal - background colour is in <div class=modal-content bg-light>-->
+  <div class="modal fade" id="modalEdit">
+    <div class="modal-dialog">
+      <div class="modal-content bg-light">
+  <!-- Edit Task Modal Header - styling in CSS file -->
+        <div class="modal-header" id="editModalHeader">
+          <h4 class="modal-title">Edit Task</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  <!-- Edit Task Modal Task Name -->
+        <form>
+            <br>
+            <div class="form-horizontal">
+              <div class="form-group">
+                  <label class="col-sm-3" for="task-name">Task Name</label>
+                  <textarea class="taskName form-control col-sm-8" id="taskName" placeholder="Enter Task Name" rows="1"></textarea>
+                </div>
+              </div>
+  <!-- Edit Task Modal Assignee -->
+  <div class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-3" for="task-assignee">Assignee</label>
+    <textarea class="assignee form-control col-sm-8" id="assignee" placeholder="Assignee Name" rows="1"></textarea>
+  </div> 
+  </div>
+  <!-- Edit Task Modal Status -->
+  <div class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-3" for="task-status">Status</label>
+    <select class="form-control col-sm-8" id="taskStatus">
+      <option></option>
+      <option>To-do</option>
+      <option>Doing</option>
+      <option>Done</option>
+    </select>
+  </div>
+  </div>
+  <!-- Edit Task Modal Task Description -->
+  <div class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-3" for="taskDescription">Task Description</label>
+    <textarea class="taskDescription form-control col-sm-8" id="taskDescription" rows="3" placeholder="Enter Task Description"></textarea>
+  </div>
+  </div>
+  <!-- Edit Task Modal Due Date -->
+  <div class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-3" for="due-date" class="col-form-label">Due Date</label>
+      <input class="form-control col-sm-8" type="dateTime-local" value="2020-08-19" id="dueDate">
+  </div>
+  </div>
+          </form>
+
+  <!-- Modal Edit Task footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
+        </div>
+
+      </div>
+    </div>
+  <!-- End Edit Task Modal -->
+  </div>
+
+
+
+  <!-- START Footer -->
+  <footer class="footer-distributed">
   <div class="footer-left">
     <h3><span><i class="fa fa-bug"></i></span>Beetle</h3>
     <p class="footer-links">
@@ -306,11 +308,11 @@
       <button>Send</button>
     </form>
   </div>
-</footer>
-<!-- END Footer -->
+  </footer>
+  <!-- END Footer -->
 
-<!-- Javascript link -->
-<script src="myscript.js"></script>
+  <!-- Javascript link -->
+  <script src="myscript.js"></script>
 
-</body>
-</html>
+  </body>
+  </html>

@@ -26,7 +26,7 @@
 
 #search {
   background: rgb(182, 216, 155);
-  border: none;
+  border: solid 1px lightgrey;
   cursor: pointer;
 }
 
@@ -47,14 +47,15 @@
 /* --- Start Cards --- */
 
 #card-header-form {
-  text-align: center;
+  text-align: left;
   border: none;
-  color: black;
+  color: rgb(83, 83, 83);
   border-radius: 0;
   box-shadow: none;
   -webkit-box-shadow: none;
   background-color: rgba(0, 0, 0, 0) !important;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
+  font-weight: bold;
 }
 .card-deck {
   float: left;
@@ -94,9 +95,8 @@
 
 /* --- Edit Task modal --- */
 
-#addModalHeader,
-.close {
-  background-color: rgb(189, 93, 157);
+#editModalHeader {
+  background-color: rgb(238, 216, 89);
   color: white !important;
   text-align: center;
   font-size: 30px;
@@ -109,6 +109,13 @@
 /* --- end Edit Task modal --- */
 
 /* --- Add Task modal --- */
+
+#addModalHeader {
+  background-color: rgb(189, 93, 157);
+  color: white !important;
+  text-align: center;
+  font-size: 30px;
+}
 
 .form-group {
   display: flex;
