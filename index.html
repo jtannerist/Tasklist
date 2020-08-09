@@ -28,7 +28,7 @@
   <body id="body">
 
 
-  <!-- START Nav bar -->
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg">
   <a class="navbar-brand" href="#"><i class="fa fa-bug"></i>Beetle</a>
   <button class="navbar-toggler navbar-light" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,32 +37,28 @@
   <!-- Nav bar link options-->
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li >
-        <a id="date" class="nav-link" href="#date"></a>
-          </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Calendar <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#contact">Contact</a>
       </li>
-      
     </ul>
   <!-- Nav bar search bar-->
+  <a id="date" class="nav-link" href="#date"></a>
   <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search">
       <button id="search" class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
     </form>
   </div> 
   </nav>
-  <!-- END Nav bar -->
+  <!-- END NAV BAR -->
 
 
 
-  <!-- START card Deck -->
-
+<!-- CARD DECK -->
   <div class="card-deck mx-auto my-sm-3">
-    <!-- First (Card) Task List  -->
+    <!-- START header -->
   <div class="card my-4">
     <div class="card-header">
       <div class="form-horizontal">
@@ -71,11 +67,14 @@
             <button id="addTaskBug" type="button" class="btn my-2 col-sm-2" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-bug"></i></button>     
   </form>
 </div>
-
+    <!-- END header -->
+  <!-- START Body - List of tasks -->
     </div>
     <div class="card-body">
             <ul id="listOfCards" class="list-group">
-        <!-- First (Card) Task  -->
+        
+      <!-- START First (Card) Task - below copied for Javascript -->
+
         <!-- <div class="row cardTask mx-0 my-1">
           <div class="col-sm-8 pl-0 pr-3">     
         <li class="list-group-item" id="taskCard">Task Example
@@ -87,30 +86,37 @@
             <li>Due: 12/09/2020</li>
             </ul>
           </div> 
-          </div>
-  View button and details of task --> 
+          </div> -->
+
+      <!-- View button and details of task --> 
+  
   <!-- <div class="taskBox col-sm-4 pr-0 pl-0">
     <span class="pull-right">          
           <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo1"><i class="fa fa-eye" aria-hidden="true"></i></button>
             -->
+
           <!-- Edit Task button that opens Modal -->
+
           <!-- <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
         </button>  -->
+
         <!-- Delete Task button that opens Modal -->
+
         <!-- <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
       </button>
   </span>  
   </li> 
   </div>
-  </div>     --> 
-  <!-- End of First (Card) Task -->     
+  </div> --> 
+
+        <!-- END First (Card) Task - above copied for Javascript -->
       </ul>
   <!-- </div> -->
     </p>
   </div>
-  <!-- End of Tasks --> 
+  <!-- END of Tasks in body --> 
 
-  <!-- Card footer that has Add Task Button -->    
+  <!-- START Card footer that has Add Task Button -->    
   <div class="card-footer">
     <form class="form-inline my-2 my-lg-0">
         <button id="addTaskBug" type="button" class="btn btn-block my-2 my-sm-0" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-bug"></i> Add Task</button>     
@@ -120,26 +126,20 @@
 
   </div>
   </div>
-    
-  <!-- START Add new list -->
+  <!-- END Card footer & End first (card) List -->    
 
+
+  <!-- ADD NEW LIST -->
   <div class="card-deck mx-auto my-sm-3">
   <div class="card my-4">
-    <div class="card-header">
-      <div class="form-horizontal">
-      <form class="form-inline ">    
-      <input id="newListFormInput" class="form-control mr-sm-4 col-sm-9" type="text" placeholder="Add new list">
-            <button id="addNewListBtn" type="button" class="btn my-2 col-sm-2" data-toggle="modal" data-target="#"><i class="fa fa-plus"></i></button>     
-  </form>
-</div>
-    </div> 
+    <div id="newListFormInput" class="card-header">
+      <button id="addNewListBtn" type="button" class="btn btn-md" data-toggle="modal" data-target="#">Add New List<i class="fa fa-plus"></i></button> 
+      </div>    
   </div>
   </div>
-  </div>
-  <!-- END add new list -->
+  <!-- END ADD NEW LIST -->
 
-
-  <!-- END card Deck -->
+<!-- END CARD DECK -->
 
 
   <!-- START Delete Task Modal -->
@@ -230,12 +230,11 @@
 
 
 
-  <!-- START Edit Task Modal -->     
-  <!-- Edit Task Modal - background colour is in <div class=modal-content bg-light>-->
+  <!-- EDIT TASK MODAL -->     
   <div class="modal fade" id="modalEdit">
     <div class="modal-dialog">
       <div class="modal-content bg-light">
-  <!-- Edit Task Modal Header - styling in CSS file -->
+  <!-- Edit Task Modal Header -->
         <div class="modal-header" id="editModalHeader">
           <h4 class="modal-title">Edit Task</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -292,14 +291,16 @@
 
       </div>
     </div>
-  <!-- End Edit Task Modal -->
+  <!-- Edit Modal closing -->
   </div>
+  <!-- END EDIT TASK MODAL -->     
 
 
 
-  <!-- START Footer -->
+  <!-- FOOTER -->
   <footer class="footer-distributed">
   <div class="footer-left">
+    <!-- Footer branding and page links -->
     <h3><span><i class="fa fa-bug"></i></span>Beetle</h3>
     <p class="footer-links">
       <a href="#">Top</a>
@@ -310,12 +311,13 @@
       ·
     </p>
     <p class="footer-company-name">Jessica & Rachel © 2020</p>
+    <!-- Footer company links to external sites -->
     <div class="footer-icons">
       <a href="https://www.facebook.com/rachel.uberti" target="_blank"><i class="fa fa-facebook"></i></a>
       <a href="https://www.linkedin.com/in/rachel-uberti-561bb9166/" target="_blank"><i class="fa fa-linkedin"></i></a>
       <a href="https://github.com/RachelUberti" target="_blank"><i class="fa fa-github"></i></a>
     </div>
-
+  <!-- Footer Contact Us -->
   </div>
   <div id="contact" class="footer-right">
     <h5 id="contactUsText">Contact Us</h5>
@@ -326,9 +328,9 @@
     </form>
   </div>
   </footer>
-  <!-- END Footer -->
+  <!-- END FOOTER -->
 
-  <!-- Javascript link -->
+  <!-- JAVASCRIPT link -->
   <script src="myscript.js"></script>
 
   </body>

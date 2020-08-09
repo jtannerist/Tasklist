@@ -1,12 +1,12 @@
-/* ---  body & page background colour --- */
+/* ---  BODY --- */
 #body {
   background-color: #1abc9c;
   margin: 0;
   font-family: "Noto Sans JP", sans-serif;
 }
-/* --- end body & page background colour --- */
+/* --- END BODY --- */
 
-/* --- start nav bar --- */
+/* --- NAVBAR --- */
 .navbar {
   background-color: #5ec9b4d7;
 }
@@ -25,7 +25,7 @@
 }
 
 #search {
-  background: #b4c93f;
+  background: #e3ec60;
   border: solid 1px lightgrey;
   cursor: pointer;
 }
@@ -40,11 +40,11 @@
 
 #date {
   color: rgb(83, 83, 83);
+  text-decoration: underline;
 }
-/* rgb(47, 121, 155); */
-/* --- end nav bar --- */
+/* --- END NAVBAR --- */
 
-/* --- Start Cards --- */
+/* --- CARDS --- */
 
 #card-header-form {
   text-align: left;
@@ -54,14 +54,14 @@
   box-shadow: none;
   -webkit-box-shadow: none;
   background-color: rgba(0, 0, 0, 0) !important;
-  /* text-transform: uppercase; */
-  font-weight: bold;
+  font-size: 20px;
 }
+
 .card-deck {
   float: left;
 }
 
-#taskCard.list-group-item {
+#taskCard {
   border: none;
   padding: 2px;
 }
@@ -81,6 +81,7 @@
   background: rgb(102, 161, 209);
   border: none;
 }
+
 .btn.edit {
   background: rgb(238, 216, 89);
   border: none;
@@ -94,23 +95,30 @@
 #newListFormInput {
   text-align: left;
   border: none;
-  color: rgb(83, 83, 83);
-  border-radius: 0;
+  border-radius: 0.25rem;
   box-shadow: none;
   -webkit-box-shadow: none;
-  background-color: rgba(0, 0, 0, 0) !important;
-  /* text-transform: uppercase; */
+  background-color: rgba(0, 0, 0, 0.125) !important;
   font-weight: bold;
+  padding: 17px;
 }
 
 #addNewListBtn {
   background: rgba(209, 126, 30, 0.795);
   border: none;
+  color: rgb(83, 83, 83);
+  font-size: 20px;
+  padding: 3px 12px;
 }
 
-/* --- end Cards --- */
+.fa-plus {
+  padding-left: 15px;
+  color: black;
+}
 
-/* --- Edit Task modal --- */
+/* --- END CARDS --- */
+
+/* --- EDIT TASK MODAL --- */
 
 #editModalHeader {
   background-color: rgb(238, 216, 89);
@@ -123,9 +131,9 @@
   background: rgb(211, 67, 74);
 }
 
-/* --- end Edit Task modal --- */
+/* --- END EDIT TASK MODAL --- */
 
-/* --- Add Task modal --- */
+/* --- ADD TASK MODAL --- */
 
 #addModalHeader {
   background-color: rgb(189, 93, 157);
@@ -137,8 +145,9 @@
 .form-group {
   display: flex;
 }
-/* --- End Add Task modal --- */
+/* --- END ADD TASK MODAL --- */
 
+/* --- VALIDATION MESSGAE STYLING --- */
 #taskNameErrMsg,
 #taskAssigneeErrMsg,
 #taskDescriptionErrMsg {
@@ -147,7 +156,9 @@
   left: 130px;
   bottom: 20px;
 }
-/* --- Start Footer --- */
+/* --- END VALIDATION MESSGAE STYLING --- */
+
+/* --- FOOTER --- */
 
 .footer-distributed {
   background: rgb(83, 83, 83);
@@ -355,4 +366,4 @@ section {
     float: none;
   }
 }
-/* --- End Footer --- */
+/* --- END FOOTER --- */
