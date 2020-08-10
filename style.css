@@ -71,7 +71,8 @@
   padding: 5px;
 }
 
-#addTaskBug {
+#addTaskBugSm,
+#addTaskBugLg {
   background: rgba(189, 93, 157, 0.753);
   border: none;
 }

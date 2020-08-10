@@ -41,16 +41,27 @@ class TaskList {
     this.tasks.push(task); // Invokes function and pushes the new object (task) into the array (tasks);
   }
 
+  deleteTask(id) {
+    for (let i = 0; i < this.tasks.length; i++) {
+      alert(`${this.tasks[i].id} === ${id}`);
+      if (this.tasks[i].id == id) {
+        alert("in delete " + i + " " + this.tasks[i].name);
+        this.tasks.splice(i, 1);
+        break;
+      }
+    }
+  }
+
   // This function displays HTML content that represents cards
   displayListHtml() {
     //alert(this.tasks.length);
     let displayHtml = "";
     //alert(displayHtml);
     for (let i = 0; i < this.tasks.length; i++) {
-      displayHtml = `<div class="row cardTask mx-0 my-1">
+      displayHtml = `<div id="taskRow_${this.tasks[i].id}" class="row cardTask mx-0 my-1 ">
       <div class="col-sm-8 pl-0 pr-3">     
     <li class="list-group-item" id="taskCard">${this.tasks[i].taskName}
-      <div id="demo1" class="collapse">
+      <div id="demo_${this.tasks[i].id}" class="collapse">
         <ul style="list-style-type:disc;">
         <li>Assignee: ${this.tasks[i].assignee}</li>
         <li>Status: ${this.tasks[i].status}</li>
@@ -61,10 +72,10 @@ class TaskList {
       </div>
 <div class="taskBox col-sm-4 pr-0 pl-0">
 <span class="pull-right">          
-      <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo1"><i class="fa fa-eye" aria-hidden="true"></i></button>
-      <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
+      <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo_${this.tasks[i].id}"><i class="fa fa-eye" aria-hidden="true"></i></button>
+      <button id="edit_${this.tasks[i].id}" type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
     </button> 
-  <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
+  <button id="delete_${this.tasks[i].id}" type="button" class="delete btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
   </button>
 </span>  
 </li> 
@@ -92,6 +103,35 @@ const taskList = new TaskList(); // Creates an instance of class BookList. Sets 
 // taskList.displayTask(); invoking the function of displaying contents of the array. taskList previously set as a variable that holds a function to create a new Task list.
 
 // END: CREATE NEW TASK //
+
+// Display tasks
+function addTaskToWebpage() {
+  let listOfCards = document.querySelector("#listOfCards");
+  const displayHtml = taskList.displayListHtml();
+  let range = document.createRange();
+  let documentFragment = range.createContextualFragment(displayHtml);
+  // attach delete event listener
+  documentFragment
+    .querySelector("button.delete")
+    .addEventListener("click", deleteTask);
+  listOfCards.appendChild(documentFragment);
+}
+// END: ADD OBJECT TO ARRAY - adding a new task //
+
+// START: DELETE TASK //
+function deleteTask() {
+  const taskElement = event.target.closest(".delete"); // Searches for the delete button most recently clicked
+  let delIdArr = taskElement.id.split("_");
+  let retreiveId = delIdArr[1];
+  alert(retreiveId);
+  taskList.deleteTask(retreiveId);
+  // Delete the list row from the ul
+  let task_row = `#taskRow_${retreiveId}`;
+  var tRow = document.querySelector(task_row);
+  tRow.parentNode.removeChild(tRow);
+}
+
+// END: DELETE TASK //
 
 // START: ADD TASK VALIDATION //
 // Set variables
@@ -147,7 +187,7 @@ btnAddTaskSave.onclick = function () {
       dueDate.value
     );
     $("#modalAdd").modal("hide"); // hides the modal once data filled out
-    displayTaskList(); //called the display function (from function displayTaskList() {)
+    addTaskToWebpage(); //called the display function (from function addTaskToWebpage() {)
   }
 };
 
@@ -198,47 +238,28 @@ taskDescription.onchange = function () {
 
 // START: ADD OBJECT TO ARRAY - adding a new task //
 
-// Display tasks
-function displayTaskList() {
-  let listOfCards = document.querySelector("#listOfCards");
-  const displayHtml = taskList.displayListHtml();
-  let range = document.createRange();
-  let documentFragment = range.createContextualFragment(displayHtml);
-  listOfCards.appendChild(documentFragment);
-}
-// END: ADD OBJECT TO ARRAY - adding a new task //
+// START: CLEAR FIELDS //
 
-// START: DELETE TASK //
-// Declare vairables
+// let addTaskBug = document.querySelector(".addTaskBug");
 
-let deleteBtnDeleteModal = document.querySelector("#deleteBtnDeleteModal");
-
-deleteBtnDeleteModal.onclick = function () {
-  alert("delete on click");
-  if (id == this.id.value)
-    taskList.deleteTask(
-      taskName.value,
-      assignee.value,
-      taskStatus.value,
-      taskDescription.value,
-      dueDate.value
-    );
-  displayTaskList(); // call displayTaskList again to display the updated array
-};
-
-// deleteTask(id) {
-//   //Takes id as a parameter and uses a for loop to loop through the tasks array - Inside the for loop, uses an if condition to check if the id matches an id from the array -
-//   let deleteTask = this.id.value;
-//   //alert("id value");
-//   for (let i = 0; i < this.tasks.length; i--) {
-
-//     // i it finds a match, it deletes that object from the array - You an use array splice or array pop here
-
-// function deleteTask(id) {
-//   deleteTask = this.task.splice(0);
+// function clearAllFields() {
+//   alert("clear");
+//   alert(taskName);
+//   taskName.value = null;
+//   assignee.value = null;
+//   status.value = null;
+//   taskDescription.value = null;
+//   dueDate.value = null;
 // };
 
-// END: DELETE TASK //
+// let addTaskBug = document.querySelector(".addTaskBug");
+//     //function to show the Modal at Add
+//     addTaskBug.onclick = function (){
+//         $('#modalAdd').modal('show');
+//         clearAllFields();
+//     }
+
+// END: CLEAR FIELDS //
 
 // START: SHOW TODAY's DATE IN NAVBAR //
 

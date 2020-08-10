@@ -57,6 +57,18 @@
 
 
 <!-- CARD DECK -->
+
+<!-- ADD NEW LIST -->
+<div class="card-deck mx-auto my-sm-3">
+  <div class="card my-4">
+    <div id="newListFormInput" class="card-header">
+      <button id="addNewListBtn" type="button" class="btn btn-md" data-toggle="modal" data-target="#">Add New List<i class="fa fa-plus"></i></button> 
+      </div>    
+  </div>
+  </div>
+  <!-- END ADD NEW LIST -->
+
+  <!-- FIRST LIST -->
   <div class="card-deck mx-auto my-sm-3">
     <!-- START header -->
   <div id="newListHtml" class="card my-4">
@@ -64,7 +76,7 @@
       <div class="form-horizontal">
       <form class="form-inline cardHeaderInline">    
       <input id="card-header-form" class="form-control mr-sm-4 col-sm-9" type="text" placeholder="Enter List Title">
-            <button id="addTaskBug" type="button" class="btn my-2 col-sm-2" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-bug"></i></button>     
+            <button id="addTaskBugSm" type="button" class="addTaskBug btn my-2 col-sm-2" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-bug"></i></button>     
   </form>
 </div>
     <!-- END header -->
@@ -119,31 +131,20 @@
   <!-- START Card footer that has Add Task Button -->    
   <div class="card-footer">
     <form class="form-inline my-2 my-lg-0">
-        <button id="addTaskBug" type="button" class="btn btn-block my-2 my-sm-0" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-bug"></i> Add Task</button>     
+        <button id="addTaskBugLg" type="button" class="addTaskBug btn btn-block my-2 my-sm-0" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-bug"></i> Add Task</button>     
       </form>
   </div>
   </div>
-
-  </div>
-  </div>
   <!-- END Card footer & End first (card) List -->    
-
-
-  <!-- ADD NEW LIST -->
-  <div class="card-deck mx-auto my-sm-3">
-  <div class="card my-4">
-    <div id="newListFormInput" class="card-header">
-      <button id="addNewListBtn" type="button" class="btn btn-md" data-toggle="modal" data-target="#">Add New List<i class="fa fa-plus"></i></button> 
-      </div>    
+  
   </div>
   </div>
-  <!-- END ADD NEW LIST -->
-
+  <!-- END FIRST LIST -->
 <!-- END CARD DECK -->
 
 
   <!-- DELETE TASK MODAL -->
-  <div class="modal fade" id="modalDelete" role="dialog">
+  <!-- <div class="modal fade" id="modalDelete" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content bg-light">
       <div class="modal-header delete">
@@ -159,7 +160,7 @@
     </div>
   </div>
   </div>
-  </div>
+  </div> -->
   <!-- END DELETE TASK MODAL -->
 
 
