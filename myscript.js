@@ -104,6 +104,7 @@ let assignee = document.querySelector("#assignee");
 let taskAssigneeErrMsg = document.querySelector("#taskAssigneeErrMsg");
 let taskStatus = document.querySelector("#taskStatus");
 let dueDate = document.querySelector("#dueDate");
+
 // Set function (action) assigned to Add Task button
 // alert("alert inside js");
 btnAddTaskSave.onclick = function () {
@@ -206,6 +207,38 @@ function displayTaskList() {
   listOfCards.appendChild(documentFragment);
 }
 // END: ADD OBJECT TO ARRAY - adding a new task //
+
+// START: DELETE TASK //
+// Declare vairables
+
+let deleteBtnDeleteModal = document.querySelector("#deleteBtnDeleteModal");
+
+deleteBtnDeleteModal.onclick = function () {
+  alert("delete on click");
+  if (id == this.id.value)
+    taskList.deleteTask(
+      taskName.value,
+      assignee.value,
+      taskStatus.value,
+      taskDescription.value,
+      dueDate.value
+    );
+  displayTaskList(); // call displayTaskList again to display the updated array
+};
+
+// deleteTask(id) {
+//   //Takes id as a parameter and uses a for loop to loop through the tasks array - Inside the for loop, uses an if condition to check if the id matches an id from the array -
+//   let deleteTask = this.id.value;
+//   //alert("id value");
+//   for (let i = 0; i < this.tasks.length; i--) {
+
+//     // i it finds a match, it deletes that object from the array - You an use array splice or array pop here
+
+// function deleteTask(id) {
+//   deleteTask = this.task.splice(0);
+// };
+
+// END: DELETE TASK //
 
 // START: SHOW TODAY's DATE IN NAVBAR //
 

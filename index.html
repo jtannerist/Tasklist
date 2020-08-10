@@ -46,11 +46,11 @@
     </ul>
   <!-- Nav bar search bar-->
   <a id="date" class="nav-link" href="#date"></a>
-  <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      <button id="search" class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div> 
+  <form class="form-inline my-2 my-lg-0" action="https://www.google.com/search" method="GET" target="_blank">
+  <input class="form-control mr-sm-2" type="text" name="q" placeholder="Google Search">
+  <button id="search" class="btn my-2 my-sm-0" type="submit" value="Google Search"><i class="fa fa-search"></i></button>
+  </form>
+   </div> 
   </nav>
   <!-- END NAV BAR -->
 
@@ -59,7 +59,7 @@
 <!-- CARD DECK -->
   <div class="card-deck mx-auto my-sm-3">
     <!-- START header -->
-  <div class="card my-4">
+  <div id="newListHtml" class="card my-4">
     <div class="card-header">
       <div class="form-horizontal">
       <form class="form-inline cardHeaderInline">    
@@ -142,7 +142,7 @@
 <!-- END CARD DECK -->
 
 
-  <!-- START Delete Task Modal -->
+  <!-- DELETE TASK MODAL -->
   <div class="modal fade" id="modalDelete" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content bg-light">
@@ -153,14 +153,14 @@
         <p>Are you sure you want to delete this task?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button> 
+        <button id="deleteBtnDeleteModal" type="button" class="btn btn-danger" data-dismiss="modal">Delete</button> 
         <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>  
       </div>
     </div>
   </div>
   </div>
   </div>
-  <!-- END Delete Task Modal-->
+  <!-- END DELETE TASK MODAL -->
 
 
   <!-- START Add Task Modal -->     
@@ -329,7 +329,7 @@
   </div>
   </footer>
   <!-- END FOOTER -->
-
+          
   <!-- JAVASCRIPT link -->
   <script src="myscript.js"></script>
 
