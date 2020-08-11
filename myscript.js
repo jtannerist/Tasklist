@@ -41,16 +41,46 @@ class TaskList {
     this.tasks.push(task); // Invokes function and pushes the new object (task) into the array (tasks);
   }
 
+  //Update function in the class
+  updateTask(id, name, description, assignee, status, date) {
+    alert("in class update");
+    let updated_id = "";
+    for (let i = 0; i < this.tasks.length; i++) {
+      if (this.tasks[i].id == id) {
+        alert("update if");
+        this.tasks[i].taskName = name;
+        this.tasks[i].description = description;
+        this.tasks[i].assignee = assignee;
+        this.tasks[i].status = status;
+        this.tasks[i].dueDate = date;
+        updated_id = id;
+        break;
+      }
+    }
+    return updated_id;
+  }
+
+  deleteTask(id) {
+    for (let i = 0; i < this.tasks.length; i++) {
+      // alert(`${this.tasks[i].id} === ${id}`);
+      if (this.tasks[i].id == id) {
+        // alert("in delete " + i + " " + this.tasks[i].name);
+        this.tasks.splice(i, 1);
+        break;
+      }
+    }
+  }
+
   // This function displays HTML content that represents cards
   displayListHtml() {
     //alert(this.tasks.length);
     let displayHtml = "";
     //alert(displayHtml);
     for (let i = 0; i < this.tasks.length; i++) {
-      displayHtml = `<div class="row cardTask mx-0 my-1">
+      displayHtml = `<div id="taskRow_${this.tasks[i].id}" class="row cardTask mx-0 my-1 ">
       <div class="col-sm-8 pl-0 pr-3">     
     <li class="list-group-item" id="taskCard">${this.tasks[i].taskName}
-      <div id="demo1" class="collapse">
+      <div id="demo_${this.tasks[i].id}" class="collapse">
         <ul style="list-style-type:disc;">
         <li>Assignee: ${this.tasks[i].assignee}</li>
         <li>Status: ${this.tasks[i].status}</li>
@@ -61,10 +91,10 @@ class TaskList {
       </div>
 <div class="taskBox col-sm-4 pr-0 pl-0">
 <span class="pull-right">          
-      <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo1"><i class="fa fa-eye" aria-hidden="true"></i></button>
-      <button type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
+      <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo_${this.tasks[i].id}"><i class="fa fa-eye" aria-hidden="true"></i></button>
+      <button id="edit_${this.tasks[i].id}" type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
     </button> 
-  <button type="button" class="btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
+  <button id="delete_${this.tasks[i].id}" type="button" class="delete btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
   </button>
 </span>  
 </li> 
@@ -93,17 +123,139 @@ const taskList = new TaskList(); // Creates an instance of class BookList. Sets 
 
 // END: CREATE NEW TASK //
 
+// START: ADD OBJECT TO ARRAY - adding a new task //
+// Display tasks
+function addTaskToWebpage() {
+  let listOfCards = document.querySelector("#listOfCards");
+  const displayHtml = taskList.displayListHtml();
+  let range = document.createRange();
+  let documentFragment = range.createContextualFragment(displayHtml);
+  // attach delete event listener
+  documentFragment
+    .querySelector("button.delete")
+    .addEventListener("click", deleteTask);
+  documentFragment
+    .querySelector("button.edit")
+    .addEventListener("click", openEditModal);
+  listOfCards.appendChild(documentFragment);
+}
+// END: ADD OBJECT TO ARRAY - adding a new task //
+
+// START: EDIT TASK //
+
+function openEditModal() {
+  // alert("hello");
+  const taskElement = event.target.closest(".edit"); // Searches for the delete button most recently clicked
+  let editIdArr = taskElement.id.split("_");
+  let retreiveId = editIdArr[1];
+  // alert(retreiveId);
+  document.querySelector("#editTaskId").value = retreiveId;
+  for (i = 0; i <= taskList.tasks.length; i++) {
+    alert("in for");
+    if (taskList.tasks[i].id == retreiveId) {
+      alert("in edit");
+      document.querySelector("#editTaskName").value =
+        taskList.tasks[i].taskName;
+      document.querySelector("#editTaskDescription").value =
+        taskList.tasks[i].description;
+      document.querySelector("#editAssignee").value =
+        taskList.tasks[i].assignee;
+      document.querySelector("#dueDate").value = taskList.tasks[i].dueDate;
+      break;
+    }
+  }
+  $("#modalEdit").modal("show"); //function to show the Modal at Edit
+}
+
+// validation for edit modal
+
+let btnEditUpdate = document.querySelector("#btnEditUpdate");
+let editTaskName = document.querySelector("#editTaskName");
+// let taskNameErrMsg = document.querySelector("#taskNameErrMsg");
+let editAssignee = document.querySelector("#editAssignee");
+// let taskAssigneeErrMsg = document.querySelector("#taskAssigneeErrMsg");
+let editTaskStatus = document.querySelector("#editTaskStatus");
+let editTaskDescription = document.querySelector("#editTaskDescription");
+// let taskDescriptionErrMsg = document.querySelector("#taskDescriptionErrMsg");
+let editDueDate = document.querySelector("#editDueDate");
+
+btnEditUpdate.onclick = function () {
+  // alert("inside function");
+  // if (
+  //   editTaskName.value == "" ||
+  //   editTaskName.value.length < 8 ||
+  //   editTaskDescription.value == "" ||
+  //   editTaskDescription.value.length < 15 ||
+  //   editAassignee.value == ""
+  // ) {
+  //   // alert("inside if");
+  //   taskNameErrMsg.innerHTML =
+  //     "Please enter a task name longer than 8 characters";
+  //   taskNameErrMsg.style.color = "#ff0000";
+  //   taskName.style.borderColor = "#ff0000";
+  //   taskAssigneeErrMsg.innerHTML = "Please enter an assignee";
+  //   taskAssigneeErrMsg.style.color = "#ff0000";
+  //   assignee.style.borderColor = "#ff0000";
+  //   taskDescriptionErrMsg.innerHTML =
+  //     "Please enter a description longer than 15 characters";
+  //   taskDescriptionErrMsg.style.color = "#ff0000";
+  //   taskDescription.style.borderColor = "#ff0000";
+  //   // return false;
+  // } else {
+  //   taskNameErrMsg.innerHTML = "Looks good!";
+  //   taskNameErrMsg.style.color = "#66CDAA";
+  //   taskName.style.borderColor = "#66CDAA";
+  //   taskAssigneeErrMsg.innerHTML = "Looks good!";
+  //   taskAssigneeErrMsg.style.color = "#66CDAA";
+  //   assignee.style.borderColor = "#66CDAA";
+  //   taskDescriptionErrMsg.innerHTML = "Looks good!";
+  //   taskDescriptionErrMsg.style.color = "#66CDAA";
+  //   taskDescription.style.borderColor = "#66CDAA";
+  //   // return true;
+  alert("here update task");
+  //after edit validation
+  let editTaskId = document.querySelector("#editTaskId");
+  let u_id = taskList.updateTask(
+    editTaskId.value,
+    editTaskName.value,
+    editTaskDescription.value,
+    editAssignee.value,
+    editTaskStatus.value,
+    editDueDate.value
+  );
+
+  $("#modalEdit").modal("hide"); // hides the modal once data filled out
+};
+
+// END: EDIT TASK //
+
+// START: DELETE TASK //
+function deleteTask() {
+  const taskElement = event.target.closest(".delete"); // Searches for the delete button most recently clicked
+  let delIdArr = taskElement.id.split("_");
+  let retreiveId = delIdArr[1];
+  // alert(retreiveId);
+  taskList.deleteTask(retreiveId);
+  // Delete the list row from the ul
+  let task_row = `#taskRow_${retreiveId}`;
+  var tRow = document.querySelector(task_row);
+  tRow.parentNode.removeChild(tRow);
+}
+
+// END: DELETE TASK //
+
 // START: ADD TASK VALIDATION //
 // Set variables
 let btnAddTaskSave = document.querySelector("#btnAddTaskSave");
 let taskName = document.querySelector("#taskName");
 let taskNameErrMsg = document.querySelector("#taskNameErrMsg");
-let taskDescription = document.querySelector("#taskDescription");
-let taskDescriptionErrMsg = document.querySelector("#taskDescriptionErrMsg");
 let assignee = document.querySelector("#assignee");
 let taskAssigneeErrMsg = document.querySelector("#taskAssigneeErrMsg");
 let taskStatus = document.querySelector("#taskStatus");
+let taskDescription = document.querySelector("#taskDescription");
+let taskDescriptionErrMsg = document.querySelector("#taskDescriptionErrMsg");
 let dueDate = document.querySelector("#dueDate");
+
 // Set function (action) assigned to Add Task button
 // alert("alert inside js");
 btnAddTaskSave.onclick = function () {
@@ -112,6 +264,7 @@ btnAddTaskSave.onclick = function () {
     taskName.value == "" ||
     taskName.value.length < 8 ||
     taskDescription.value == "" ||
+    taskDescription.value.length < 15 ||
     assignee.value == ""
   ) {
     // alert("inside if");
@@ -122,7 +275,8 @@ btnAddTaskSave.onclick = function () {
     taskAssigneeErrMsg.innerHTML = "Please enter an assignee";
     taskAssigneeErrMsg.style.color = "#ff0000";
     assignee.style.borderColor = "#ff0000";
-    taskDescriptionErrMsg.innerHTML = "Please enter a Task Description";
+    taskDescriptionErrMsg.innerHTML =
+      "Please enter a description longer than 15 characters";
     taskDescriptionErrMsg.style.color = "#ff0000";
     taskDescription.style.borderColor = "#ff0000";
     // return false;
@@ -146,7 +300,7 @@ btnAddTaskSave.onclick = function () {
       dueDate.value
     );
     $("#modalAdd").modal("hide"); // hides the modal once data filled out
-    displayTaskList(); //called the display function (from function displayTaskList() {)
+    addTaskToWebpage(); //called the display function (from function addTaskToWebpage() {)
   }
 };
 
@@ -181,9 +335,9 @@ assignee.onchange = function () {
 
 //Task Description on change validation
 taskDescription.onchange = function () {
-  if (taskDescription.value == "") {
-    taskDescription.innerHTML =
-      "Please enter a task description longer than 8 characters";
+  if (taskDescription.value == "" || taskDescription.value.length < 15) {
+    taskDescriptionErrMsg.innerHTML =
+      "Please enter a description longer than 15 characters";
     taskDescriptionErrMsg.style.color = "#ff0000";
     taskDescription.style.borderColor = "#ff0000";
   } else {
@@ -195,17 +349,73 @@ taskDescription.onchange = function () {
 
 // END: ADD TASK VALIDATION //
 
-// START: ADD OBJECT TO ARRAY - adding a new task //
+// START: CLEAR FIELDS //
 
-// Display tasks
-function displayTaskList() {
-  let listOfCards = document.querySelector("#listOfCards");
-  const displayHtml = taskList.displayListHtml();
-  let range = document.createRange();
-  let documentFragment = range.createContextualFragment(displayHtml);
-  listOfCards.appendChild(documentFragment);
+let addTaskBug = document.querySelectorAll("button.addTaskBug");
+// alert(addTaskBug);
+for (i = 0; i < addTaskBug.length; i++) {
+  addTaskBug[i].onclick = function () {
+    $("#modalAdd").modal("show"); //function to show the Modal at Add
+    clearAllFields();
+  };
 }
-// END: ADD OBJECT TO ARRAY - adding a new task //
+
+function clearAllFields() {
+  // alert("clear");
+  // alert(taskName);
+  taskName.value = null;
+  assignee.value = null;
+  taskStatus.value = null;
+  taskDescription.value = null;
+  dueDate.value = null;
+  taskNameErrMsg.innerHTML = "";
+  taskAssigneeErrMsg.innerHTML = "";
+  taskDescriptionErrMsg.innerHTML = "";
+  taskName.style.borderColor = "#ced4da";
+  assignee.style.borderColor = "#ced4da";
+  taskDescription.style.borderColor = "#ced4da";
+}
+
+// END: CLEAR FIELDS //
+
+// START: FETCH API //
+
+// //set the specific API URL
+// const url = 'http://www.example.com';
+
+// //function to make API Call
+// const getFetch = async (url) => {
+//   const response = await fetch(url);
+//   //convert response to Json format
+//   const myJson = await response.json();
+//   // return the response
+//   return myJson ;
+// }
+
+// //initialize the data to be posted
+
+// const data = {
+
+// }
+
+// //function to make API Call
+// const postFetch = async (url,data) => (
+// const response = await fetch(url, {
+//     method: 'POST',
+//     headers: {
+//       //type of data
+//       'Content-Type': 'application/json'
+//     },
+//     //data to be posted on server
+//     body: JSON.stringify(data)
+//   });
+// //convert response to Json format
+// const myJson = await response.json();
+// //return the response
+// return myJson ;
+// }
+
+// END: FETCH API //
 
 // START: SHOW TODAY's DATE IN NAVBAR //
 

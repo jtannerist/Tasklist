@@ -39,8 +39,7 @@
 }
 
 #date {
-  color: rgb(83, 83, 83);
-  text-decoration: underline;
+  color: white;
 }
 /* --- END NAVBAR --- */
 
@@ -72,7 +71,8 @@
   padding: 5px;
 }
 
-#addTaskBug {
+#addTaskBugSm,
+#addTaskBugLg {
   background: rgba(189, 93, 157, 0.753);
   border: none;
 }
@@ -100,7 +100,7 @@
   -webkit-box-shadow: none;
   background-color: rgba(0, 0, 0, 0.125) !important;
   font-weight: bold;
-  padding: 17px;
+  padding: 20px;
 }
 
 #addNewListBtn {
@@ -276,7 +276,7 @@ section {
   color: #d1d2d2;
 
   width: 400px;
-  padding: 18px;
+  padding: 12px;
 }
 
 .footer-distributed ::-webkit-input-placeholder {
@@ -293,12 +293,13 @@ section {
 }
 
 #contactUsText {
-  font-size: 20px;
+  font-size: 1rem;
   border: none;
   color: white;
+  padding: 0px 0px 8px 0px;
 }
 .footer-distributed form input {
-  height: 55px;
+  height: 40px;
   margin-bottom: 15px;
 }
 

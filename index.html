@@ -46,25 +46,37 @@
     </ul>
   <!-- Nav bar search bar-->
   <a id="date" class="nav-link" href="#date"></a>
-  <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      <button id="search" class="btn my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-    </form>
-  </div> 
+  <form class="form-inline my-2 my-lg-0" action="https://www.google.com/search" method="GET" target="_blank">
+  <input class="form-control mr-sm-2" type="text" name="q" placeholder="Google Search">
+  <button id="search" class="btn my-2 my-sm-0" type="submit" value="Google Search"><i class="fa fa-search"></i></button>
+  </form>
+   </div> 
   </nav>
   <!-- END NAV BAR -->
 
 
 
 <!-- CARD DECK -->
+
+<!-- ADD NEW LIST -->
+<div class="card-deck mx-auto my-sm-3">
+  <div class="card my-4">
+    <div id="newListFormInput" class="card-header">
+      <button id="addNewListBtn" type="button" class="btn btn-md" data-toggle="modal" data-target="#">Add New List<i class="fa fa-plus"></i></button> 
+      </div>    
+  </div>
+  </div>
+  <!-- END ADD NEW LIST -->
+
+  <!-- FIRST LIST -->
   <div class="card-deck mx-auto my-sm-3">
     <!-- START header -->
-  <div class="card my-4">
+  <div id="newListHtml" class="card my-4">
     <div class="card-header">
       <div class="form-horizontal">
       <form class="form-inline cardHeaderInline">    
       <input id="card-header-form" class="form-control mr-sm-4 col-sm-9" type="text" placeholder="Enter List Title">
-            <button id="addTaskBug" type="button" class="btn my-2 col-sm-2" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-bug"></i></button>     
+            <button id="addTaskBugSm" type="button" class="addTaskBug btn my-2 col-sm-2" data-toggle="modal"><i class="fa fa-bug"></i></button>     
   </form>
 </div>
     <!-- END header -->
@@ -119,31 +131,20 @@
   <!-- START Card footer that has Add Task Button -->    
   <div class="card-footer">
     <form class="form-inline my-2 my-lg-0">
-        <button id="addTaskBug" type="button" class="btn btn-block my-2 my-sm-0" data-toggle="modal" data-target="#modalAdd"><i class="fa fa-bug"></i> Add Task</button>     
+        <button id="addTaskBugLg" type="button" class="addTaskBug btn btn-block my-2 my-sm-0" data-toggle="modal"><i class="fa fa-bug"></i> Add Task</button>     
       </form>
   </div>
   </div>
-
-  </div>
-  </div>
   <!-- END Card footer & End first (card) List -->    
-
-
-  <!-- ADD NEW LIST -->
-  <div class="card-deck mx-auto my-sm-3">
-  <div class="card my-4">
-    <div id="newListFormInput" class="card-header">
-      <button id="addNewListBtn" type="button" class="btn btn-md" data-toggle="modal" data-target="#">Add New List<i class="fa fa-plus"></i></button> 
-      </div>    
+  
   </div>
   </div>
-  <!-- END ADD NEW LIST -->
-
+  <!-- END FIRST LIST -->
 <!-- END CARD DECK -->
 
 
-  <!-- START Delete Task Modal -->
-  <div class="modal fade" id="modalDelete" role="dialog">
+  <!-- DELETE TASK MODAL -->
+  <!-- <div class="modal fade" id="modalDelete" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content bg-light">
       <div class="modal-header delete">
@@ -153,14 +154,14 @@
         <p>Are you sure you want to delete this task?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button> 
+        <button id="deleteBtnDeleteModal" type="button" class="btn btn-danger" data-dismiss="modal">Delete</button> 
         <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>  
       </div>
     </div>
   </div>
   </div>
-  </div>
-  <!-- END Delete Task Modal-->
+  </div> -->
+  <!-- END DELETE TASK MODAL -->
 
 
   <!-- START Add Task Modal -->     
@@ -177,25 +178,24 @@
     <br>
     <div class="form-horizontal">
     <div class="form-group">
-        <label class="col-sm-3" for="task-name">Task Name</label>
-        <textarea class="taskName form-control col-sm-8" id="taskName" placeholder="Enter Task Name" rows="1"></textarea>
-      </div>
+        <label class="col-sm-3" for="taskName">Task Name</label>
+        <input type="text" class="taskName form-control col-sm-8" placeholder="Enter task name" id="taskName">
+          </div>
       <span id="taskNameErrMsg"></span>
     </div>
       <!-- Add Task Modal Assignee -->
       <div class="form-horizontal">
       <div class="form-group">
-        <label class="col-sm-3" for="task-assignee">Assignee</label>
-        <textarea class="assignee form-control col-sm-8" id="assignee" placeholder="Assignee Name" rows="1"></textarea>
+        <label class="col-sm-3" for="Assignee">Assignee</label>
+        <input type="text" class="assignee form-control col-sm-8" placeholder="Assignee Name" id="assignee">
       </div> 
       <span id="taskAssigneeErrMsg"></span>
       </div>
       <!-- Add Task Modal Status -->
       <div class="form-horizontal">
       <div class="form-group">
-        <label class="col-sm-3" for="task-status">Status</label>
+        <label class="col-sm-3" for="taskStatus">Status</label>
         <select class="form-control col-sm-8" id="taskStatus">
-          <option></option>
           <option>To-do</option>
           <option>Doing</option>
           <option>Done</option>
@@ -205,15 +205,15 @@
       <!-- Add Task Modal Task Description -->
       <div class="form-horizontal">
       <div class="form-group">
-        <label class="col-sm-3" for="taskDescription">Task Description</label>
-        <textarea class="taskDescription form-control col-sm-8" id="taskDescription" rows="3" placeholder="Enter Task Description"></textarea>
+        <label class="col-sm-3" for="taskDescription">Description</label>
+        <textarea class="taskDescription form-control col-sm-8"    placeholder="Enter Description" id="taskDescription"></textarea>
       </div>
       <span id="taskDescriptionErrMsg"></span>
     </div>
       <!-- Add Task Modal Due Date -->
       <div class="form-horizontal">
       <div class="form-group">
-        <label class="col-sm-3" for="due-date" class="col-form-label">Due Date</label>
+        <label class="col-sm-3" for="dueDate" class="col-form-label">Due Date</label>
           <input class="form-control col-sm-8" type="dateTime-local" value="2020-08-19" id="dueDate">
     </div>
   </div>
@@ -244,23 +244,23 @@
             <br>
             <div class="form-horizontal">
               <div class="form-group">
+                <input type="hidden" class="taskName form-control col-sm-8" id="editTaskId">
                   <label class="col-sm-3" for="task-name">Task Name</label>
-                  <textarea class="taskName form-control col-sm-8" id="taskName" placeholder="Enter Task Name" rows="1"></textarea>
+                  <input type="text" class="taskName form-control col-sm-8" id="editTaskName" placeholder="Enter Task Name">
                 </div>
               </div>
   <!-- Edit Task Modal Assignee -->
   <div class="form-horizontal">
   <div class="form-group">
     <label class="col-sm-3" for="task-assignee">Assignee</label>
-    <textarea class="assignee form-control col-sm-8" id="assignee" placeholder="Assignee Name" rows="1"></textarea>
+    <input type="text" class="assignee form-control col-sm-8" id="editAssignee" placeholder="Assignee Name">
   </div> 
   </div>
   <!-- Edit Task Modal Status -->
   <div class="form-horizontal">
   <div class="form-group">
     <label class="col-sm-3" for="task-status">Status</label>
-    <select class="form-control col-sm-8" id="taskStatus">
-      <option></option>
+    <select class="form-control col-sm-8" id="editTaskStatus">
       <option>To-do</option>
       <option>Doing</option>
       <option>Done</option>
@@ -271,21 +271,21 @@
   <div class="form-horizontal">
   <div class="form-group">
     <label class="col-sm-3" for="taskDescription">Task Description</label>
-    <textarea class="taskDescription form-control col-sm-8" id="taskDescription" rows="3" placeholder="Enter Task Description"></textarea>
+    <textarea class="taskDescription form-control col-sm-8" id="editTaskDescription" rows="3" placeholder="Enter Task Description"></textarea>
   </div>
   </div>
   <!-- Edit Task Modal Due Date -->
   <div class="form-horizontal">
   <div class="form-group">
     <label class="col-sm-3" for="due-date" class="col-form-label">Due Date</label>
-      <input class="form-control col-sm-8" type="dateTime-local" value="2020-08-19" id="dueDate">
+      <input class="form-control col-sm-8" type="dateTime-local" value="2020-08-19" id="editDueDate">
   </div>
   </div>
           </form>
 
   <!-- Modal Edit Task footer -->
         <div class="modal-footer">
-            <button type="button" class="btn btn-info" data-dismiss="modal">Save</button>
+            <button id="btnEditUpdate" type="button" class="btn btn-info" data-dismiss="modal">Update</button>
             <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
         </div>
 
@@ -329,7 +329,7 @@
   </div>
   </footer>
   <!-- END FOOTER -->
-
+          
   <!-- JAVASCRIPT link -->
   <script src="myscript.js"></script>
 
