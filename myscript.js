@@ -167,64 +167,98 @@ function openEditModal() {
   $("#modalEdit").modal("show"); //function to show the Modal at Edit
 }
 
-// validation for edit modal
-
+// Validation for edit modal
 let btnEditUpdate = document.querySelector("#btnEditUpdate");
 let editTaskName = document.querySelector("#editTaskName");
-// let taskNameErrMsg = document.querySelector("#taskNameErrMsg");
+let editTaskNameErrMsg = document.querySelector("#editTaskNameErrMsg");
 let editAssignee = document.querySelector("#editAssignee");
-// let taskAssigneeErrMsg = document.querySelector("#taskAssigneeErrMsg");
+let editTaskAssigneeErrMsg = document.querySelector("#editTaskAssigneeErrMsg");
 let editTaskStatus = document.querySelector("#editTaskStatus");
 let editTaskDescription = document.querySelector("#editTaskDescription");
-// let taskDescriptionErrMsg = document.querySelector("#taskDescriptionErrMsg");
+let editTaskDescriptionErrMsg = document.querySelector(
+  "#editTaskDescriptionErrMsg"
+);
 let editDueDate = document.querySelector("#editDueDate");
 
 btnEditUpdate.onclick = function () {
-  // alert("inside function");
-  // if (
-  //   editTaskName.value == "" ||
-  //   editTaskName.value.length < 8 ||
-  //   editTaskDescription.value == "" ||
-  //   editTaskDescription.value.length < 15 ||
-  //   editAassignee.value == ""
-  // ) {
-  //   // alert("inside if");
-  //   taskNameErrMsg.innerHTML =
-  //     "Please enter a task name longer than 8 characters";
-  //   taskNameErrMsg.style.color = "#ff0000";
-  //   taskName.style.borderColor = "#ff0000";
-  //   taskAssigneeErrMsg.innerHTML = "Please enter an assignee";
-  //   taskAssigneeErrMsg.style.color = "#ff0000";
-  //   assignee.style.borderColor = "#ff0000";
-  //   taskDescriptionErrMsg.innerHTML =
-  //     "Please enter a description longer than 15 characters";
-  //   taskDescriptionErrMsg.style.color = "#ff0000";
-  //   taskDescription.style.borderColor = "#ff0000";
-  //   // return false;
-  // } else {
-  //   taskNameErrMsg.innerHTML = "Looks good!";
-  //   taskNameErrMsg.style.color = "#66CDAA";
-  //   taskName.style.borderColor = "#66CDAA";
-  //   taskAssigneeErrMsg.innerHTML = "Looks good!";
-  //   taskAssigneeErrMsg.style.color = "#66CDAA";
-  //   assignee.style.borderColor = "#66CDAA";
-  //   taskDescriptionErrMsg.innerHTML = "Looks good!";
-  //   taskDescriptionErrMsg.style.color = "#66CDAA";
-  //   taskDescription.style.borderColor = "#66CDAA";
-  //   // return true;
-  alert("here update task");
-  //after edit validation
-  let editTaskId = document.querySelector("#editTaskId");
-  let u_id = taskList.updateTask(
-    editTaskId.value,
-    editTaskName.value,
-    editTaskDescription.value,
-    editAssignee.value,
-    editTaskStatus.value,
-    editDueDate.value
-  );
+  // alert("inside edit function");
+  if (
+    editTaskName.value == "" ||
+    editTaskName.value.length < 8 ||
+    editTaskDescription.value == "" ||
+    editTaskDescription.value.length < 15 ||
+    editAssignee.value == ""
+  ) {
+    // alert("inside edit if");
+    editTaskNameErrMsg.innerHTML =
+      "Please enter a task name longer than 8 characters";
+    editTaskNameErrMsg.style.color = "#ff0000";
+    editTaskName.style.borderColor = "#ff0000";
+    editTaskAssigneeErrMsg.innerHTML = "Please enter an assignee";
+    editTaskAssigneeErrMsg.style.color = "#ff0000";
+    editAssignee.style.borderColor = "#ff0000";
+    editTaskDescriptionErrMsg.innerHTML =
+      "Please enter a description longer than 15 characters";
+    editTaskDescriptionErrMsg.style.color = "#ff0000";
+    editTaskDescription.style.borderColor = "#ff0000";
 
+    // alert("here edit task");
+    //after edit validation
+    let editTaskId = document.querySelector("#editTaskId");
+    let u_id = taskList.updateTask(
+      editTaskId.value,
+      editTaskName.value,
+      editTaskDescription.value,
+      editAssignee.value,
+      editTaskStatus.value,
+      editDueDate.value
+    );
+  }
   $("#modalEdit").modal("hide"); // hides the modal once data filled out
+};
+
+// Edit Task Name on change validation
+editTaskName.onchange = function () {
+  if (editTaskName.value == "" || editTaskName.value.length < 8) {
+    editTaskNameErrMsg.innerHTML =
+      "Please enter a task name longer than 8 characters";
+    editTaskNameErrMsg.style.color = "#ff0000";
+    editTaskName.style.borderColor = "#ff0000";
+  } else {
+    editTaskNameErrMsg.innerHTML = "Looks good!";
+    editTaskNameErrMsg.style.color = "#66CDAA";
+    editTaskName.style.borderColor = "#66CDAA";
+  }
+};
+
+// Edit Assignee on change validation
+editAssignee.onchange = function () {
+  if (editAssignee.value == "") {
+    editTaskAssigneeErrMsg.innerHTML = "Please enter an assignee";
+    editTaskAssigneeErrMsg.style.color = "#ff0000";
+    editAssignee.style.borderColor = "#ff0000";
+  } else {
+    editTaskAssigneeErrMsg.innerHTML = "Looks good!";
+    editTaskAssigneeErrMsg.style.color = "#66CDAA";
+    editAssignee.style.borderColor = "#66CDAA";
+  }
+};
+
+// Edit Task Description on change validation
+editTaskDescription.onchange = function () {
+  if (
+    editTaskDescription.value == "" ||
+    editTaskDescription.value.length < 15
+  ) {
+    editTaskDescriptionErrMsg.innerHTML =
+      "Please enter a description longer than 15 characters";
+    editTaskDescriptionErrMsg.style.color = "#ff0000";
+    editTaskDescription.style.borderColor = "#ff0000";
+  } else {
+    editTaskDescriptionErrMsg.innerHTML = "Looks good!";
+    editTaskDescriptionErrMsg.style.color = "#66CDAA";
+    editTaskDescription.style.borderColor = "#66CDAA";
+  }
 };
 
 // END: EDIT TASK //
@@ -365,7 +399,7 @@ function clearAllFields() {
   // alert(taskName);
   taskName.value = null;
   assignee.value = null;
-  taskStatus.value = null;
+  taskStatus.value = selected;
   taskDescription.value = null;
   dueDate.value = null;
   taskNameErrMsg.innerHTML = "";

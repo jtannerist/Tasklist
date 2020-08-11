@@ -62,7 +62,7 @@
 <div class="card-deck mx-auto my-sm-3">
   <div class="card my-4">
     <div id="newListFormInput" class="card-header">
-      <button id="addNewListBtn" type="button" class="btn btn-md" data-toggle="modal" data-target="#">Add New List<i class="fa fa-plus"></i></button> 
+      <button id="addNewListBtn" type="button" class="btn btn-md" data-toggle="modal" data-target="#">Add New List<i id="faplus" class="fa fa-plus"></i></button> 
       </div>    
   </div>
   </div>
@@ -195,10 +195,10 @@
       <div class="form-horizontal">
       <div class="form-group">
         <label class="col-sm-3" for="taskStatus">Status</label>
-        <select class="form-control col-sm-8" id="taskStatus">
-          <option>To-do</option>
-          <option>Doing</option>
-          <option>Done</option>
+        <select id="taskStatus" class="form-control col-sm-8" name="taskStatus">
+          <option value="to-do">To-do</option>
+          <option value="doing">Doing</option>
+          <option value="done">Done</option>
         </select>
       </div>
     </div>
@@ -248,36 +248,39 @@
                   <label class="col-sm-3" for="task-name">Task Name</label>
                   <input type="text" class="taskName form-control col-sm-8" id="editTaskName" placeholder="Enter Task Name">
                 </div>
+                <span id="editTaskNameErrMsg"></span>
               </div>
   <!-- Edit Task Modal Assignee -->
   <div class="form-horizontal">
   <div class="form-group">
-    <label class="col-sm-3" for="task-assignee">Assignee</label>
+    <label class="col-sm-3" for="editAssignee">Assignee</label>
     <input type="text" class="assignee form-control col-sm-8" id="editAssignee" placeholder="Assignee Name">
   </div> 
+  <span id="editTaskAssigneeErrMsg"></span>
   </div>
   <!-- Edit Task Modal Status -->
   <div class="form-horizontal">
   <div class="form-group">
-    <label class="col-sm-3" for="task-status">Status</label>
-    <select class="form-control col-sm-8" id="editTaskStatus">
-      <option>To-do</option>
-      <option>Doing</option>
-      <option>Done</option>
+    <label class="col-sm-3" for="editTaskStatus">Status</label>
+    <select class="form-control col-sm-8" id="editTaskStatus" name="editTaskStatus">
+      <option value="to-do">To-do</option>
+      <option value="doing">Doing</option>
+      <option value="done">Done</option>
     </select>
   </div>
   </div>
   <!-- Edit Task Modal Task Description -->
   <div class="form-horizontal">
   <div class="form-group">
-    <label class="col-sm-3" for="taskDescription">Task Description</label>
+    <label class="col-sm-3" for="editTaskDescription">Task Description</label>
     <textarea class="taskDescription form-control col-sm-8" id="editTaskDescription" rows="3" placeholder="Enter Task Description"></textarea>
   </div>
+  <span id="editTaskDescriptionErrMsg"></span>
   </div>
   <!-- Edit Task Modal Due Date -->
   <div class="form-horizontal">
   <div class="form-group">
-    <label class="col-sm-3" for="due-date" class="col-form-label">Due Date</label>
+    <label class="col-sm-3" for="editDueDate" class="col-form-label">Due Date</label>
       <input class="form-control col-sm-8" type="dateTime-local" value="2020-08-19" id="editDueDate">
   </div>
   </div>
