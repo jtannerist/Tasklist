@@ -18,7 +18,8 @@ class Task {
 class TaskList {
   constructor() {
     this.tasks = [];
-    this.currentId = 1;
+    this.currentId = parseInt(localStorage.getItem("currentId")) || 1;
+    localStorage.setItem("currentId", this.currentId);
   }
 
   // END: SET CLASSES FOR TASKS & TASKLIST //
@@ -39,6 +40,12 @@ class TaskList {
     // alert("here");
     // creates an instance of class
     this.tasks.push(task); // Invokes function and pushes the new object (task) into the array (tasks);
+
+    //add to local storage
+    localStorage.setItem("currentId", this.currentId);
+    let mynewtasks = JSON.parse(localStorage.getItem("mytasks")) || [];
+    mynewtasks.push(task);
+    localStorage.setItem("mytasks", JSON.stringify(mynewtasks));
   }
 
   //Update function in the class
@@ -54,6 +61,16 @@ class TaskList {
         this.tasks[i].status = status;
         this.tasks[i].dueDate = date;
         updated_id = id;
+
+        //update in local storage
+        let mynewtasks = JSON.parse(localStorage.getItem("mytasks"));
+        mynewtasks[i].taskName = name;
+        mynewtasks[i].description = description;
+        mynewtasks[i].assignee = assignee;
+        mynewtasks[i].status = status;
+        mynewtasks[i].dueDate = date;
+        localStorage.setItem("mytasks", JSON.stringify(mynewtasks));
+        alert("edit local");
         break;
       }
     }
@@ -66,6 +83,11 @@ class TaskList {
       if (this.tasks[i].id == id) {
         // alert("in delete " + i + " " + this.tasks[i].name);
         this.tasks.splice(i, 1);
+
+        //delete from local storage
+        let mynewtasks = JSON.parse(localStorage.getItem("mytasks"));
+        mynewtasks.splice(i, 1);
+        localStorage.setItem("mytasks", JSON.stringify(mynewtasks));
         break;
       }
     }
@@ -79,15 +101,18 @@ class TaskList {
     for (let i = 0; i < this.tasks.length; i++) {
       displayHtml = `<div id="taskRow_${this.tasks[i].id}" class="row cardTask mx-0 my-1 ">
       <div class="col-sm-8 pl-0 pr-3">     
-    <li class="list-group-item" id="taskCard">${this.tasks[i].taskName}
-      <div id="demo_${this.tasks[i].id}" class="collapse">
-        <ul style="list-style-type:disc;">
-        <li>Assignee: ${this.tasks[i].assignee}</li>
-        <li>Status: ${this.tasks[i].status}</li>
-        <li>Description: ${this.tasks[i].description}</li>
-        <li>Due: ${this.tasks[i].dueDate}</li>
-        </ul>
-      </div> 
+      <li class="list-group-item" id="taskCard_${this.tasks[i].id}">
+      <div id="divTaskName_${this.tasks[i].id}">
+      ${this.tasks[i].taskName}
+      </div>
+            <div id="demo_${this.tasks[i].id}" class="collapse" name="demo_${this.tasks[i].id}">
+              <ul> 
+              <li>Assignee: ${this.tasks[i].assignee}</li>
+              <li>Status: ${this.tasks[i].status}</li>
+              <li>Description: ${this.tasks[i].description}</li>
+              <li>Due: ${this.tasks[i].dueDate}</li>
+              </ul> 
+            </div>
       </div>
 <div class="taskBox col-sm-4 pr-0 pl-0">
 <span class="pull-right">          
@@ -140,6 +165,56 @@ function addTaskToWebpage() {
   listOfCards.appendChild(documentFragment);
 }
 // END: ADD OBJECT TO ARRAY - adding a new task //
+
+// START: DISPLAY TASKS FROM STORAGE ON WEB PAGE LOAD //
+
+displayAllTasksFromStorage();
+// Display all task froms storage
+function displayAllTasksFromStorage() {
+  let mynewtasks = JSON.parse(window.localStorage.getItem("mytasks"));
+  let displayAllHtml = "";
+  if (mynewtasks) {
+    for (let i = 0; i < mynewtasks.length; i++) {
+      displayAllHtml = `<div id="taskRow_${mynewtasks[i].id}" class="row cardTask mx-0 my-1 ">
+<div class="col-sm-8 pl-0 pr-3">     
+<li class="list-group-item" id="taskCard">${mynewtasks[i].taskName}
+<div id="demo_${mynewtasks[i].id}" class="collapse">
+  <ul style="list-style-type:disc;">
+  <li>Assignee: ${mynewtasks[i].assignee}</li>
+  <li>Status: ${mynewtasks[i].status}</li>
+  <li>Description: ${mynewtasks[i].description}</li>
+  <li>Due: ${mynewtasks[i].dueDate}</li>
+  </ul>
+</div> 
+</div>
+<div class="taskBox col-sm-4 pr-0 pl-0">
+<span class="pull-right">          
+<button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo_${mynewtasks[i].id}"><i class="fa fa-eye" aria-hidden="true"></i></button>
+<button id="edit_${mynewtasks[i].id}" type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
+</button> 
+<button id="delete_${mynewtasks[i].id}" type="button" class="delete btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
+</button>
+</span>  
+</li> 
+</div>
+</div> `;
+      let listOfCards = document.querySelector("#listOfCards");
+      let range = document.createRange();
+      let documentFragment = range.createContextualFragment(displayAllHtml);
+      // local storage attach delete event listener
+      documentFragment
+        .querySelector("button.delete")
+        .addEventListener("click", deleteTask);
+      // local storage attach edit event listener
+      documentFragment
+        .querySelector("button.edit")
+        .addEventListener("click", openEditModal);
+      listOfCards.appendChild(documentFragment);
+    }
+  }
+}
+
+// END: DISPLAY TASKS FROM STORAGE ON WEB PAGE LOAD //
 
 // START: EDIT TASK //
 
@@ -201,10 +276,22 @@ btnEditUpdate.onclick = function () {
       "Please enter a description longer than 15 characters";
     editTaskDescriptionErrMsg.style.color = "#ff0000";
     editTaskDescription.style.borderColor = "#ff0000";
+  } else {
+    editTaskNameErrMsg.innerHTML = "Looks good!";
+    editTaskNameErrMsg.style.color = "#66CDAA";
+    editTaskName.style.borderColor = "#66CDAA";
+    editTaskAssigneeErrMsg.innerHTML = "Looks good!";
+    editTaskAssigneeErrMsg.style.color = "#66CDAA";
+    editAssignee.style.borderColor = "#66CDAA";
+    editTaskDescriptionErrMsg.innerHTML = "Looks good!";
+    editTaskDescriptionErrMsg.style.color = "#66CDAA";
+    editTaskDescription.style.borderColor = "#66CDAA";
+    // return true;
 
-    // alert("here edit task");
+    alert("here edit task");
     //after edit validation
     let editTaskId = document.querySelector("#editTaskId");
+    alert("after edit task");
     let u_id = taskList.updateTask(
       editTaskId.value,
       editTaskName.value,
@@ -213,8 +300,9 @@ btnEditUpdate.onclick = function () {
       editTaskStatus.value,
       editDueDate.value
     );
+    $("#modalEdit").modal("hide"); // hides the modal once data filled out
+    displayUpdatedTask(u_id);
   }
-  $("#modalEdit").modal("hide"); // hides the modal once data filled out
 };
 
 // Edit Task Name on change validation
@@ -277,6 +365,26 @@ function deleteTask() {
 }
 
 // END: DELETE TASK //
+
+// START: DISPLAY UPDATED TASK//
+function displayUpdatedTask(u_id) {
+  alert("display updated here " + u_id);
+  let e_pname_id = `#divTaskName_${u_id}`;
+  let e_pdetails_id = `#demo_${u_id}`;
+  var pname_element = document.querySelector(e_pname_id);
+  var pdetails_element = document.querySelector(e_pdetails_id);
+  for (i = 0; i <= taskList.tasks.length; i++) {
+    alert("edit for local");
+    if (taskList.tasks[i].id == u_id) {
+      alert("if local");
+      pname_element.innerHTML = taskList.tasks[i].taskName;
+      pdetails_element.innerHTML = `Assigned to ${taskList.tasks[i].assignee} on ${taskList.tasks[i].dueDate}`;
+      break;
+    }
+  }
+}
+
+// END: DISPLAY UPDATED TASK//
 
 // START: ADD TASK VALIDATION //
 // Set variables
@@ -399,7 +507,6 @@ function clearAllFields() {
   // alert(taskName);
   taskName.value = null;
   assignee.value = null;
-  taskStatus.value = selected;
   taskDescription.value = null;
   dueDate.value = null;
   taskNameErrMsg.innerHTML = "";
@@ -408,48 +515,10 @@ function clearAllFields() {
   taskName.style.borderColor = "#ced4da";
   assignee.style.borderColor = "#ced4da";
   taskDescription.style.borderColor = "#ced4da";
+  taskStatus.value = selected;
 }
 
 // END: CLEAR FIELDS //
-
-// START: FETCH API //
-
-// //set the specific API URL
-// const url = 'http://www.example.com';
-
-// //function to make API Call
-// const getFetch = async (url) => {
-//   const response = await fetch(url);
-//   //convert response to Json format
-//   const myJson = await response.json();
-//   // return the response
-//   return myJson ;
-// }
-
-// //initialize the data to be posted
-
-// const data = {
-
-// }
-
-// //function to make API Call
-// const postFetch = async (url,data) => (
-// const response = await fetch(url, {
-//     method: 'POST',
-//     headers: {
-//       //type of data
-//       'Content-Type': 'application/json'
-//     },
-//     //data to be posted on server
-//     body: JSON.stringify(data)
-//   });
-// //convert response to Json format
-// const myJson = await response.json();
-// //return the response
-// return myJson ;
-// }
-
-// END: FETCH API //
 
 // START: SHOW TODAY's DATE IN NAVBAR //
 
