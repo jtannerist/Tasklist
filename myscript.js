@@ -50,27 +50,31 @@ class TaskList {
 
   //Update function in the class
   updateTask(id, name, description, assignee, status, date) {
-    alert("in class update");
+    // alert("in class update");
     let updated_id = "";
     for (let i = 0; i < this.tasks.length; i++) {
       if (this.tasks[i].id == id) {
-        alert("update if");
+        // alert("update if");
         this.tasks[i].taskName = name;
         this.tasks[i].description = description;
         this.tasks[i].assignee = assignee;
         this.tasks[i].status = status;
         this.tasks[i].dueDate = date;
         updated_id = id;
+      }
+    }
+    let mynewtasks = JSON.parse(localStorage.getItem("mytasks"));
 
+    for (let i = 0; i < mynewtasks.length; i++) {
+      if (mynewtasks[i].id == id) {
         //update in local storage
-        let mynewtasks = JSON.parse(localStorage.getItem("mytasks"));
         mynewtasks[i].taskName = name;
         mynewtasks[i].description = description;
         mynewtasks[i].assignee = assignee;
         mynewtasks[i].status = status;
         mynewtasks[i].dueDate = date;
         localStorage.setItem("mytasks", JSON.stringify(mynewtasks));
-        alert("edit local");
+        // alert("edit local");
         break;
       }
     }
@@ -79,54 +83,21 @@ class TaskList {
 
   deleteTask(id) {
     for (let i = 0; i < this.tasks.length; i++) {
-      // alert(`${this.tasks[i].id} === ${id}`);
       if (this.tasks[i].id == id) {
-        // alert("in delete " + i + " " + this.tasks[i].name);
         this.tasks.splice(i, 1);
-
-        //delete from local storage
-        let mynewtasks = JSON.parse(localStorage.getItem("mytasks"));
+        break;
+      }
+    }
+    //local storage
+    let mynewtasks = JSON.parse(localStorage.getItem("mytasks"));
+    for (let i = 0; i < mynewtasks.length; i++) {
+      if (mynewtasks[i].id == id) {
+        // delete from local storage
         mynewtasks.splice(i, 1);
         localStorage.setItem("mytasks", JSON.stringify(mynewtasks));
         break;
       }
     }
-  }
-
-  // This function displays HTML content that represents cards
-  displayListHtml() {
-    //alert(this.tasks.length);
-    let displayHtml = "";
-    //alert(displayHtml);
-    for (let i = 0; i < this.tasks.length; i++) {
-      displayHtml = `<div id="taskRow_${this.tasks[i].id}" class="row cardTask mx-0 my-1 ">
-      <div class="col-sm-8 pl-0 pr-3">     
-      <li class="list-group-item" id="taskCard_${this.tasks[i].id}">
-      <div id="divTaskName_${this.tasks[i].id}">
-      ${this.tasks[i].taskName}
-      </div>
-            <div id="demo_${this.tasks[i].id}" class="collapse" name="demo_${this.tasks[i].id}">
-              <ul> 
-              <li>Assignee: ${this.tasks[i].assignee}</li>
-              <li>Status: ${this.tasks[i].status}</li>
-              <li>Description: ${this.tasks[i].description}</li>
-              <li>Due: ${this.tasks[i].dueDate}</li>
-              </ul> 
-            </div>
-      </div>
-<div class="taskBox col-sm-4 pr-0 pl-0">
-<span class="pull-right">          
-      <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo_${this.tasks[i].id}"><i class="fa fa-eye" aria-hidden="true"></i></button>
-      <button id="edit_${this.tasks[i].id}" type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
-    </button> 
-  <button id="delete_${this.tasks[i].id}" type="button" class="delete btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
-  </button>
-</span>  
-</li> 
-</div>
-</div> `;
-    }
-    return displayHtml;
   }
 
   // Keyword 'displayXXX' to create function
@@ -171,9 +142,11 @@ function addTaskToWebpage() {
 displayAllTasksFromStorage();
 // Display all task froms storage
 function displayAllTasksFromStorage() {
-  let mynewtasks = JSON.parse(window.localStorage.getItem("mytasks"));
+  let mynewtasks =
+    JSON.parse(window.localStorage.getItem("mytasks")) || taskList.tasks;
   let displayAllHtml = "";
   if (mynewtasks) {
+    listOfCards.innerHTML = "";
     for (let i = 0; i < mynewtasks.length; i++) {
       displayAllHtml = `<div id="taskRow_${mynewtasks[i].id}" class="row cardTask mx-0 my-1 ">
 <div class="col-sm-8 pl-0 pr-3">     
@@ -225,17 +198,16 @@ function openEditModal() {
   let retreiveId = editIdArr[1];
   // alert(retreiveId);
   document.querySelector("#editTaskId").value = retreiveId;
-  for (i = 0; i <= taskList.tasks.length; i++) {
-    alert("in for");
-    if (taskList.tasks[i].id == retreiveId) {
-      alert("in edit");
-      document.querySelector("#editTaskName").value =
-        taskList.tasks[i].taskName;
+  var taskArr = JSON.parse(localStorage.getItem("mytasks")) || taskList.tasks;
+  for (i = 0; i <= taskArr.length; i++) {
+    // alert("in for");
+    if (taskArr[i].id == retreiveId) {
+      // alert("in edit");
+      document.querySelector("#editTaskName").value = taskArr[i].taskName;
       document.querySelector("#editTaskDescription").value =
-        taskList.tasks[i].description;
-      document.querySelector("#editAssignee").value =
-        taskList.tasks[i].assignee;
-      document.querySelector("#dueDate").value = taskList.tasks[i].dueDate;
+        taskArr[i].description;
+      document.querySelector("#editAssignee").value = taskArr[i].assignee;
+      document.querySelector("#dueDate").value = taskArr[i].dueDate;
       break;
     }
   }
@@ -301,7 +273,8 @@ btnEditUpdate.onclick = function () {
       editDueDate.value
     );
     $("#modalEdit").modal("hide"); // hides the modal once data filled out
-    displayUpdatedTask(u_id);
+    // displayUpdatedTask(u_id);
+    displayAllTasksFromStorage();
   }
 };
 
@@ -353,38 +326,23 @@ editTaskDescription.onchange = function () {
 
 // START: DELETE TASK //
 function deleteTask() {
+  alert("delete");
   const taskElement = event.target.closest(".delete"); // Searches for the delete button most recently clicked
+  alert("del2");
   let delIdArr = taskElement.id.split("_");
+  alert("del3");
   let retreiveId = delIdArr[1];
-  // alert(retreiveId);
+  alert(retreiveId);
   taskList.deleteTask(retreiveId);
+  alert("d");
   // Delete the list row from the ul
-  let task_row = `#taskRow_${retreiveId}`;
-  var tRow = document.querySelector(task_row);
-  tRow.parentNode.removeChild(tRow);
+  // let task_row = `#taskRow_${retreiveId}`;
+  // var tRow = document.querySelector(task_row);
+  // tRow.parentNode.removeChild(tRow);
+  displayAllTasksFromStorage();
 }
 
 // END: DELETE TASK //
-
-// START: DISPLAY UPDATED TASK//
-function displayUpdatedTask(u_id) {
-  alert("display updated here " + u_id);
-  let e_pname_id = `#divTaskName_${u_id}`;
-  let e_pdetails_id = `#demo_${u_id}`;
-  var pname_element = document.querySelector(e_pname_id);
-  var pdetails_element = document.querySelector(e_pdetails_id);
-  for (i = 0; i <= taskList.tasks.length; i++) {
-    alert("edit for local");
-    if (taskList.tasks[i].id == u_id) {
-      alert("if local");
-      pname_element.innerHTML = taskList.tasks[i].taskName;
-      pdetails_element.innerHTML = `Assigned to ${taskList.tasks[i].assignee} on ${taskList.tasks[i].dueDate}`;
-      break;
-    }
-  }
-}
-
-// END: DISPLAY UPDATED TASK//
 
 // START: ADD TASK VALIDATION //
 // Set variables
@@ -442,7 +400,8 @@ btnAddTaskSave.onclick = function () {
       dueDate.value
     );
     $("#modalAdd").modal("hide"); // hides the modal once data filled out
-    addTaskToWebpage(); //called the display function (from function addTaskToWebpage() {)
+    // addTaskToWebpage(); //called the display function (from function addTaskToWebpage() {)
+    displayAllTasksFromStorage();
   }
 };
 
