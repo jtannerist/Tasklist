@@ -45,7 +45,7 @@
 
 /* --- CARDS --- */
 
-#card-header-form {
+#listTitle {
   text-align: left;
   border: none;
   color: rgb(83, 83, 83);
@@ -153,7 +153,7 @@
 }
 /* --- END ADD TASK MODAL --- */
 
-/* --- VALIDATION MESSGAE STYLING --- */
+/* --- VALIDATION MESSAGE STYLING --- */
 #taskNameErrMsg,
 #taskAssigneeErrMsg,
 #taskDescriptionErrMsg {

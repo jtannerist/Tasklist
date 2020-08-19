@@ -260,10 +260,10 @@ btnEditUpdate.onclick = function () {
     editTaskDescription.style.borderColor = "#66CDAA";
     // return true;
 
-    alert("here edit task");
+    // alert("here edit task");
     //after edit validation
     let editTaskId = document.querySelector("#editTaskId");
-    alert("after edit task");
+    // alert("after edit task");
     let u_id = taskList.updateTask(
       editTaskId.value,
       editTaskName.value,
@@ -326,15 +326,15 @@ editTaskDescription.onchange = function () {
 
 // START: DELETE TASK //
 function deleteTask() {
-  alert("delete");
+  // alert("delete");
   const taskElement = event.target.closest(".delete"); // Searches for the delete button most recently clicked
-  alert("del2");
+  // alert("del2");
   let delIdArr = taskElement.id.split("_");
-  alert("del3");
+  // alert("del3");
   let retreiveId = delIdArr[1];
-  alert(retreiveId);
+  // alert(retreiveId);
   taskList.deleteTask(retreiveId);
-  alert("d");
+  // alert("d");
   // Delete the list row from the ul
   // let task_row = `#taskRow_${retreiveId}`;
   // var tRow = document.querySelector(task_row);
@@ -478,6 +478,30 @@ function clearAllFields() {
 }
 
 // END: CLEAR FIELDS //
+
+// START: STORE LIST TITLE //
+
+// declare variable
+let listTitle = document.querySelector("#listTitle");
+// declare variable for title entered by user
+// let listTitleVal =
+// JSON.parse(localStorage.getItem("listTitle")) ||
+// document.querySelector("#listTitle").value;
+document.querySelector("#listTitle").value = JSON.parse(
+  localStorage.getItem("listTitle")
+);
+// alert(document.querySelector("#listTitle").value);
+// Invoke function when value changed to either retrieve from local storage or add new
+listTitle.onchange = function () {
+  localStorage.setItem(
+    "listTitle",
+    JSON.stringify(document.querySelector("#listTitle").value)
+  );
+  // localStorage.setItem("listTitle", JSON.stringify(listTitleVal));
+  // alert(document.querySelector("#listTitle").value);
+};
+
+// END: STORE LIST TITLE //
 
 // START: SHOW TODAY's DATE IN NAVBAR //
 
