@@ -18,7 +18,8 @@ class Task {
 class TaskList {
   constructor() {
     this.tasks = [];
-    this.currentId = 1;
+    this.currentId = parseInt(localStorage.getItem("currentId")) || 1;
+    localStorage.setItem("currentId", this.currentId);
   }
 
   // END: SET CLASSES FOR TASKS & TASKLIST //
@@ -39,21 +40,41 @@ class TaskList {
     // alert("here");
     // creates an instance of class
     this.tasks.push(task); // Invokes function and pushes the new object (task) into the array (tasks);
+
+    //add to local storage
+    localStorage.setItem("currentId", this.currentId);
+    let mynewtasks = JSON.parse(localStorage.getItem("mytasks")) || [];
+    mynewtasks.push(task);
+    localStorage.setItem("mytasks", JSON.stringify(mynewtasks));
   }
 
   //Update function in the class
   updateTask(id, name, description, assignee, status, date) {
-    alert("in class update");
+    // alert("in class update");
     let updated_id = "";
     for (let i = 0; i < this.tasks.length; i++) {
       if (this.tasks[i].id == id) {
-        alert("update if");
+        // alert("update if");
         this.tasks[i].taskName = name;
         this.tasks[i].description = description;
         this.tasks[i].assignee = assignee;
         this.tasks[i].status = status;
         this.tasks[i].dueDate = date;
         updated_id = id;
+      }
+    }
+    let mynewtasks = JSON.parse(localStorage.getItem("mytasks"));
+
+    for (let i = 0; i < mynewtasks.length; i++) {
+      if (mynewtasks[i].id == id) {
+        //update in local storage
+        mynewtasks[i].taskName = name;
+        mynewtasks[i].description = description;
+        mynewtasks[i].assignee = assignee;
+        mynewtasks[i].status = status;
+        mynewtasks[i].dueDate = date;
+        localStorage.setItem("mytasks", JSON.stringify(mynewtasks));
+        // alert("edit local");
         break;
       }
     }
@@ -62,46 +83,21 @@ class TaskList {
 
   deleteTask(id) {
     for (let i = 0; i < this.tasks.length; i++) {
-      // alert(`${this.tasks[i].id} === ${id}`);
       if (this.tasks[i].id == id) {
-        // alert("in delete " + i + " " + this.tasks[i].name);
         this.tasks.splice(i, 1);
         break;
       }
     }
-  }
-
-  // This function displays HTML content that represents cards
-  displayListHtml() {
-    //alert(this.tasks.length);
-    let displayHtml = "";
-    //alert(displayHtml);
-    for (let i = 0; i < this.tasks.length; i++) {
-      displayHtml = `<div id="taskRow_${this.tasks[i].id}" class="row cardTask mx-0 my-1 ">
-      <div class="col-sm-8 pl-0 pr-3">     
-    <li class="list-group-item" id="taskCard">${this.tasks[i].taskName}
-      <div id="demo_${this.tasks[i].id}" class="collapse">
-        <ul style="list-style-type:disc;">
-        <li>Assignee: ${this.tasks[i].assignee}</li>
-        <li>Status: ${this.tasks[i].status}</li>
-        <li>Description: ${this.tasks[i].description}</li>
-        <li>Due: ${this.tasks[i].dueDate}</li>
-        </ul>
-      </div> 
-      </div>
-<div class="taskBox col-sm-4 pr-0 pl-0">
-<span class="pull-right">          
-      <button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo_${this.tasks[i].id}"><i class="fa fa-eye" aria-hidden="true"></i></button>
-      <button id="edit_${this.tasks[i].id}" type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
-    </button> 
-  <button id="delete_${this.tasks[i].id}" type="button" class="delete btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
-  </button>
-</span>  
-</li> 
-</div>
-</div> `;
+    //local storage
+    let mynewtasks = JSON.parse(localStorage.getItem("mytasks"));
+    for (let i = 0; i < mynewtasks.length; i++) {
+      if (mynewtasks[i].id == id) {
+        // delete from local storage
+        mynewtasks.splice(i, 1);
+        localStorage.setItem("mytasks", JSON.stringify(mynewtasks));
+        break;
+      }
     }
-    return displayHtml;
   }
 
   // Keyword 'displayXXX' to create function
@@ -141,6 +137,58 @@ function addTaskToWebpage() {
 }
 // END: ADD OBJECT TO ARRAY - adding a new task //
 
+// START: DISPLAY TASKS FROM STORAGE ON WEB PAGE LOAD //
+
+displayAllTasksFromStorage();
+// Display all task froms storage
+function displayAllTasksFromStorage() {
+  let mynewtasks =
+    JSON.parse(window.localStorage.getItem("mytasks")) || taskList.tasks;
+  let displayAllHtml = "";
+  if (mynewtasks) {
+    listOfCards.innerHTML = "";
+    for (let i = 0; i < mynewtasks.length; i++) {
+      displayAllHtml = `<div id="taskRow_${mynewtasks[i].id}" class="row cardTask mx-0 my-1 ">
+<div class="col-sm-8 pl-0 pr-3">     
+<li class="list-group-item" id="taskCard">${mynewtasks[i].taskName}
+<div id="demo_${mynewtasks[i].id}" class="collapse">
+  <ul style="list-style-type:disc;">
+  <li>Assignee: ${mynewtasks[i].assignee}</li>
+  <li>Status: ${mynewtasks[i].status}</li>
+  <li>Description: ${mynewtasks[i].description}</li>
+  <li>Due: ${mynewtasks[i].dueDate}</li>
+  </ul>
+</div> 
+</div>
+<div class="taskBox col-sm-4 pr-0 pl-0">
+<span class="pull-right">          
+<button type="button" class="btn view btn-sm" data-toggle="collapse" data-target="#demo_${mynewtasks[i].id}"><i class="fa fa-eye" aria-hidden="true"></i></button>
+<button id="edit_${mynewtasks[i].id}" type="button" class="btn edit btn-sm" data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil"></i>
+</button> 
+<button id="delete_${mynewtasks[i].id}" type="button" class="delete btn trash btn-sm" data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash"></i></button>
+</button>
+</span>  
+</li> 
+</div>
+</div> `;
+      let listOfCards = document.querySelector("#listOfCards");
+      let range = document.createRange();
+      let documentFragment = range.createContextualFragment(displayAllHtml);
+      // local storage attach delete event listener
+      documentFragment
+        .querySelector("button.delete")
+        .addEventListener("click", deleteTask);
+      // local storage attach edit event listener
+      documentFragment
+        .querySelector("button.edit")
+        .addEventListener("click", openEditModal);
+      listOfCards.appendChild(documentFragment);
+    }
+  }
+}
+
+// END: DISPLAY TASKS FROM STORAGE ON WEB PAGE LOAD //
+
 // START: EDIT TASK //
 
 function openEditModal() {
@@ -150,96 +198,148 @@ function openEditModal() {
   let retreiveId = editIdArr[1];
   // alert(retreiveId);
   document.querySelector("#editTaskId").value = retreiveId;
-  for (i = 0; i <= taskList.tasks.length; i++) {
-    alert("in for");
-    if (taskList.tasks[i].id == retreiveId) {
-      alert("in edit");
-      document.querySelector("#editTaskName").value =
-        taskList.tasks[i].taskName;
+  var taskArr = JSON.parse(localStorage.getItem("mytasks")) || taskList.tasks;
+  for (i = 0; i <= taskArr.length; i++) {
+    // alert("in for");
+    if (taskArr[i].id == retreiveId) {
+      // alert("in edit");
+      document.querySelector("#editTaskName").value = taskArr[i].taskName;
       document.querySelector("#editTaskDescription").value =
-        taskList.tasks[i].description;
-      document.querySelector("#editAssignee").value =
-        taskList.tasks[i].assignee;
-      document.querySelector("#dueDate").value = taskList.tasks[i].dueDate;
+        taskArr[i].description;
+      document.querySelector("#editAssignee").value = taskArr[i].assignee;
+      document.querySelector("#dueDate").value = taskArr[i].dueDate;
       break;
     }
   }
   $("#modalEdit").modal("show"); //function to show the Modal at Edit
 }
 
-// validation for edit modal
-
+// Validation for edit modal
 let btnEditUpdate = document.querySelector("#btnEditUpdate");
 let editTaskName = document.querySelector("#editTaskName");
-// let taskNameErrMsg = document.querySelector("#taskNameErrMsg");
+let editTaskNameErrMsg = document.querySelector("#editTaskNameErrMsg");
 let editAssignee = document.querySelector("#editAssignee");
-// let taskAssigneeErrMsg = document.querySelector("#taskAssigneeErrMsg");
+let editTaskAssigneeErrMsg = document.querySelector("#editTaskAssigneeErrMsg");
 let editTaskStatus = document.querySelector("#editTaskStatus");
 let editTaskDescription = document.querySelector("#editTaskDescription");
-// let taskDescriptionErrMsg = document.querySelector("#taskDescriptionErrMsg");
+let editTaskDescriptionErrMsg = document.querySelector(
+  "#editTaskDescriptionErrMsg"
+);
 let editDueDate = document.querySelector("#editDueDate");
 
 btnEditUpdate.onclick = function () {
-  // alert("inside function");
-  // if (
-  //   editTaskName.value == "" ||
-  //   editTaskName.value.length < 8 ||
-  //   editTaskDescription.value == "" ||
-  //   editTaskDescription.value.length < 15 ||
-  //   editAassignee.value == ""
-  // ) {
-  //   // alert("inside if");
-  //   taskNameErrMsg.innerHTML =
-  //     "Please enter a task name longer than 8 characters";
-  //   taskNameErrMsg.style.color = "#ff0000";
-  //   taskName.style.borderColor = "#ff0000";
-  //   taskAssigneeErrMsg.innerHTML = "Please enter an assignee";
-  //   taskAssigneeErrMsg.style.color = "#ff0000";
-  //   assignee.style.borderColor = "#ff0000";
-  //   taskDescriptionErrMsg.innerHTML =
-  //     "Please enter a description longer than 15 characters";
-  //   taskDescriptionErrMsg.style.color = "#ff0000";
-  //   taskDescription.style.borderColor = "#ff0000";
-  //   // return false;
-  // } else {
-  //   taskNameErrMsg.innerHTML = "Looks good!";
-  //   taskNameErrMsg.style.color = "#66CDAA";
-  //   taskName.style.borderColor = "#66CDAA";
-  //   taskAssigneeErrMsg.innerHTML = "Looks good!";
-  //   taskAssigneeErrMsg.style.color = "#66CDAA";
-  //   assignee.style.borderColor = "#66CDAA";
-  //   taskDescriptionErrMsg.innerHTML = "Looks good!";
-  //   taskDescriptionErrMsg.style.color = "#66CDAA";
-  //   taskDescription.style.borderColor = "#66CDAA";
-  //   // return true;
-  alert("here update task");
-  //after edit validation
-  let editTaskId = document.querySelector("#editTaskId");
-  let u_id = taskList.updateTask(
-    editTaskId.value,
-    editTaskName.value,
-    editTaskDescription.value,
-    editAssignee.value,
-    editTaskStatus.value,
-    editDueDate.value
-  );
+  // alert("inside edit function");
+  if (
+    editTaskName.value == "" ||
+    editTaskName.value.length < 8 ||
+    editTaskDescription.value == "" ||
+    editTaskDescription.value.length < 15 ||
+    editAssignee.value == ""
+  ) {
+    // alert("inside edit if");
+    editTaskNameErrMsg.innerHTML =
+      "Please enter a task name longer than 8 characters";
+    editTaskNameErrMsg.style.color = "#ff0000";
+    editTaskName.style.borderColor = "#ff0000";
+    editTaskAssigneeErrMsg.innerHTML = "Please enter an assignee";
+    editTaskAssigneeErrMsg.style.color = "#ff0000";
+    editAssignee.style.borderColor = "#ff0000";
+    editTaskDescriptionErrMsg.innerHTML =
+      "Please enter a description longer than 15 characters";
+    editTaskDescriptionErrMsg.style.color = "#ff0000";
+    editTaskDescription.style.borderColor = "#ff0000";
+  } else {
+    editTaskNameErrMsg.innerHTML = "Looks good!";
+    editTaskNameErrMsg.style.color = "#66CDAA";
+    editTaskName.style.borderColor = "#66CDAA";
+    editTaskAssigneeErrMsg.innerHTML = "Looks good!";
+    editTaskAssigneeErrMsg.style.color = "#66CDAA";
+    editAssignee.style.borderColor = "#66CDAA";
+    editTaskDescriptionErrMsg.innerHTML = "Looks good!";
+    editTaskDescriptionErrMsg.style.color = "#66CDAA";
+    editTaskDescription.style.borderColor = "#66CDAA";
+    // return true;
 
-  $("#modalEdit").modal("hide"); // hides the modal once data filled out
+    // alert("here edit task");
+    //after edit validation
+    let editTaskId = document.querySelector("#editTaskId");
+    // alert("after edit task");
+    let u_id = taskList.updateTask(
+      editTaskId.value,
+      editTaskName.value,
+      editTaskDescription.value,
+      editAssignee.value,
+      editTaskStatus.value,
+      editDueDate.value
+    );
+    $("#modalEdit").modal("hide"); // hides the modal once data filled out
+    // displayUpdatedTask(u_id);
+    displayAllTasksFromStorage();
+  }
+};
+
+// Edit Task Name on change validation
+editTaskName.onchange = function () {
+  if (editTaskName.value == "" || editTaskName.value.length < 8) {
+    editTaskNameErrMsg.innerHTML =
+      "Please enter a task name longer than 8 characters";
+    editTaskNameErrMsg.style.color = "#ff0000";
+    editTaskName.style.borderColor = "#ff0000";
+  } else {
+    editTaskNameErrMsg.innerHTML = "Looks good!";
+    editTaskNameErrMsg.style.color = "#66CDAA";
+    editTaskName.style.borderColor = "#66CDAA";
+  }
+};
+
+// Edit Assignee on change validation
+editAssignee.onchange = function () {
+  if (editAssignee.value == "") {
+    editTaskAssigneeErrMsg.innerHTML = "Please enter an assignee";
+    editTaskAssigneeErrMsg.style.color = "#ff0000";
+    editAssignee.style.borderColor = "#ff0000";
+  } else {
+    editTaskAssigneeErrMsg.innerHTML = "Looks good!";
+    editTaskAssigneeErrMsg.style.color = "#66CDAA";
+    editAssignee.style.borderColor = "#66CDAA";
+  }
+};
+
+// Edit Task Description on change validation
+editTaskDescription.onchange = function () {
+  if (
+    editTaskDescription.value == "" ||
+    editTaskDescription.value.length < 15
+  ) {
+    editTaskDescriptionErrMsg.innerHTML =
+      "Please enter a description longer than 15 characters";
+    editTaskDescriptionErrMsg.style.color = "#ff0000";
+    editTaskDescription.style.borderColor = "#ff0000";
+  } else {
+    editTaskDescriptionErrMsg.innerHTML = "Looks good!";
+    editTaskDescriptionErrMsg.style.color = "#66CDAA";
+    editTaskDescription.style.borderColor = "#66CDAA";
+  }
 };
 
 // END: EDIT TASK //
 
 // START: DELETE TASK //
 function deleteTask() {
+  // alert("delete");
   const taskElement = event.target.closest(".delete"); // Searches for the delete button most recently clicked
+  // alert("del2");
   let delIdArr = taskElement.id.split("_");
+  // alert("del3");
   let retreiveId = delIdArr[1];
   // alert(retreiveId);
   taskList.deleteTask(retreiveId);
+  // alert("d");
   // Delete the list row from the ul
-  let task_row = `#taskRow_${retreiveId}`;
-  var tRow = document.querySelector(task_row);
-  tRow.parentNode.removeChild(tRow);
+  // let task_row = `#taskRow_${retreiveId}`;
+  // var tRow = document.querySelector(task_row);
+  // tRow.parentNode.removeChild(tRow);
+  displayAllTasksFromStorage();
 }
 
 // END: DELETE TASK //
@@ -300,7 +400,8 @@ btnAddTaskSave.onclick = function () {
       dueDate.value
     );
     $("#modalAdd").modal("hide"); // hides the modal once data filled out
-    addTaskToWebpage(); //called the display function (from function addTaskToWebpage() {)
+    // addTaskToWebpage(); //called the display function (from function addTaskToWebpage() {)
+    displayAllTasksFromStorage();
   }
 };
 
@@ -365,7 +466,6 @@ function clearAllFields() {
   // alert(taskName);
   taskName.value = null;
   assignee.value = null;
-  taskStatus.value = null;
   taskDescription.value = null;
   dueDate.value = null;
   taskNameErrMsg.innerHTML = "";
@@ -374,48 +474,34 @@ function clearAllFields() {
   taskName.style.borderColor = "#ced4da";
   assignee.style.borderColor = "#ced4da";
   taskDescription.style.borderColor = "#ced4da";
+  taskStatus.value = selected;
 }
 
 // END: CLEAR FIELDS //
 
-// START: FETCH API //
+// START: STORE LIST TITLE //
 
-// //set the specific API URL
-// const url = 'http://www.example.com';
+// declare variable
+let listTitle = document.querySelector("#listTitle");
+// declare variable for title entered by user
+// let listTitleVal =
+// JSON.parse(localStorage.getItem("listTitle")) ||
+// document.querySelector("#listTitle").value;
+document.querySelector("#listTitle").value = JSON.parse(
+  localStorage.getItem("listTitle")
+);
+// alert(document.querySelector("#listTitle").value);
+// Invoke function when value changed to either retrieve from local storage or add new
+listTitle.onchange = function () {
+  localStorage.setItem(
+    "listTitle",
+    JSON.stringify(document.querySelector("#listTitle").value)
+  );
+  // localStorage.setItem("listTitle", JSON.stringify(listTitleVal));
+  // alert(document.querySelector("#listTitle").value);
+};
 
-// //function to make API Call
-// const getFetch = async (url) => {
-//   const response = await fetch(url);
-//   //convert response to Json format
-//   const myJson = await response.json();
-//   // return the response
-//   return myJson ;
-// }
-
-// //initialize the data to be posted
-
-// const data = {
-
-// }
-
-// //function to make API Call
-// const postFetch = async (url,data) => (
-// const response = await fetch(url, {
-//     method: 'POST',
-//     headers: {
-//       //type of data
-//       'Content-Type': 'application/json'
-//     },
-//     //data to be posted on server
-//     body: JSON.stringify(data)
-//   });
-// //convert response to Json format
-// const myJson = await response.json();
-// //return the response
-// return myJson ;
-// }
-
-// END: FETCH API //
+// END: STORE LIST TITLE //
 
 // START: SHOW TODAY's DATE IN NAVBAR //
 

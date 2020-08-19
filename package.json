@@ -1,0 +1,25 @@
+{
+  "name": "tasklist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "myscript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtannerist/Tasklist.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jtannerist/Tasklist/issues"
+  },
+  "homepage": "https://github.com/jtannerist/Tasklist#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "react-calendar": "^3.1.0"
+  }
+}
