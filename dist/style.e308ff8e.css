@@ -1,0 +1,389 @@
+/* ---  BODY --- */
+#body {
+  background-color: #1abc9c;
+  margin: 0;
+  font-family: "Noto Sans JP", sans-serif;
+}
+/* --- END BODY --- */
+
+/* --- NAVBAR --- */
+.navbar {
+  background-color: #5ec9b4d7;
+}
+
+.navbar-brand {
+  color: rgb(83, 83, 83);
+  font-weight: bold;
+}
+
+.nav-link {
+  color: white;
+}
+
+.navbar a:hover {
+  color: rgb(83, 83, 83);
+}
+
+#search {
+  background: #e3ec60;
+  border: solid 1px lightgrey;
+  cursor: pointer;
+}
+
+.fa-search {
+  color: rgb(83, 83, 83);
+}
+
+.fa-search:hover {
+  color: white;
+}
+
+#date {
+  color: white;
+}
+/* --- END NAVBAR --- */
+
+/* --- CARDS --- */
+
+#listTitle {
+  text-align: left;
+  border: none;
+  color: rgb(83, 83, 83);
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  background-color: rgba(0, 0, 0, 0) !important;
+  font-size: 20px;
+}
+
+.card-deck {
+  float: left;
+}
+
+#taskCard {
+  border: none;
+  padding: 2px;
+}
+
+.cardTask {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  padding: 5px;
+}
+
+#addTaskBugSm,
+#addTaskBugLg {
+  background: rgba(189, 93, 157, 0.753);
+  border: none;
+  color: rgb(83, 83, 83);
+}
+
+.btn.view {
+  background: rgb(102, 161, 209);
+  border: none;
+}
+
+.btn.edit {
+  background: rgb(238, 216, 89);
+  border: none;
+}
+
+.btn.trash {
+  background: rgb(158, 155, 155);
+  border: none;
+}
+
+#newListFormInput {
+  text-align: left;
+  border: none;
+  border-radius: 0.25rem;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.125) !important;
+  font-weight: bold;
+  padding: 20px;
+}
+
+#addNewListBtn {
+  background: rgba(209, 126, 30, 0.795);
+  border: none;
+  color: rgb(83, 83, 83);
+  font-size: 20px;
+  padding: 3px 12px;
+}
+
+.fa-plus {
+  padding-left: 10px;
+  color: black;
+}
+
+#faplus {
+  font-size: 16px;
+  color: rgb(83, 83, 83);
+}
+
+/* --- END CARDS --- */
+
+/* --- EDIT TASK MODAL --- */
+
+#editModalHeader {
+  background-color: rgb(238, 216, 89);
+  color: white !important;
+  text-align: center;
+  font-size: 30px;
+}
+
+.modal-header.delete {
+  background: rgb(211, 67, 74);
+}
+
+/* --- END EDIT TASK MODAL --- */
+
+/* --- ADD TASK MODAL --- */
+
+#addModalHeader {
+  background-color: rgb(189, 93, 157);
+  color: white !important;
+  text-align: center;
+  font-size: 30px;
+}
+
+.form-group {
+  display: flex;
+}
+/* --- END ADD TASK MODAL --- */
+
+/* --- VALIDATION MESSAGE STYLING --- */
+#taskNameErrMsg,
+#taskAssigneeErrMsg,
+#taskDescriptionErrMsg {
+  font-size: 10px;
+  position: relative;
+  left: 130px;
+  bottom: 20px;
+}
+
+#editTaskNameErrMsg,
+#editTaskAssigneeErrMsg,
+#editTaskDescriptionErrMsg {
+  font-size: 10px;
+  position: relative;
+  left: 130px;
+  bottom: 20px;
+}
+
+/* --- END VALIDATION MESSGAE STYLING --- */
+
+/* --- FOOTER --- */
+
+.footer-distributed {
+  background: rgb(83, 83, 83);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  font: bold 16px;
+  text-align: left;
+  padding: 50px 60px 40px;
+  overflow: hidden;
+}
+
+section {
+  width: 100%;
+  display: inline-block;
+  background: #ccc;
+  height: 60vh;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Footer left */
+.footer-distributed .footer-left {
+  float: left;
+}
+
+/* The company logo */
+.footer-distributed h3 {
+  color: #ffffff;
+  margin: 0 0 10px;
+}
+
+.footer-distributed h3 span {
+  color: #1abc9c;
+}
+
+/* Footer links */
+.footer-distributed .footer-links {
+  color: #ffffff;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.footer-distributed .footer-links a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-distributed .footer-company-name {
+  color: #8f9296;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* Footer social icons */
+
+.footer-distributed .footer-icons {
+  margin-top: 40px;
+}
+
+.footer-distributed .footer-icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right {
+  float: right;
+}
+
+.footer-distributed .footer-right p {
+  display: inline-block;
+  vertical-align: top;
+  margin: 15px 42px 0 0;
+  color: #ffffff;
+}
+
+/* The contact form */
+
+.footer-distributed form {
+  display: inline-block;
+}
+
+.footer-distributed form input,
+.footer-distributed form textarea {
+  display: block;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background-color: #1f2022;
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  border: none;
+  resize: none;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: normal;
+  color: #d1d2d2;
+
+  width: 400px;
+  padding: 12px;
+}
+
+.footer-distributed ::-webkit-input-placeholder {
+  color: #5c666b;
+}
+
+.footer-distributed ::-moz-placeholder {
+  color: #5c666b;
+  opacity: 1;
+}
+
+.footer-distributed :-ms-input-placeholder {
+  color: #5c666b;
+}
+
+#contactUsText {
+  font-size: 1rem;
+  border: none;
+  color: white;
+  padding: 0px 0px 8px 0px;
+}
+.footer-distributed form input {
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+.footer-distributed form textarea {
+  height: 100px;
+  margin-bottom: 15px;
+}
+
+.footer-distributed form button {
+  border-radius: 3px;
+  background-color: #33383b;
+  color: #ffffff;
+  border: 0;
+  padding: 8px 35px;
+  font-weight: bold;
+  float: right;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 1000px) {
+  .footer-distributed {
+    font: bold 14px;
+  }
+
+  .footer-distributed .footer-company-name {
+    font-size: 12px;
+  }
+
+  .footer-distributed form input,
+  .footer-distributed form textarea {
+    width: 250px;
+  }
+
+  .footer-distributed form button {
+    padding: 8px 35px;
+  }
+}
+
+@media (max-width: 800px) {
+  .footer-distributed {
+    padding: 30px;
+  }
+
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-right {
+    float: none;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .footer-distributed .footer-left {
+    margin-bottom: 30px;
+  }
+
+  .footer-distributed form {
+    margin-top: 30px;
+  }
+
+  .footer-distributed form {
+    display: block;
+  }
+
+  .footer-distributed form button {
+    float: none;
+  }
+}
+/* --- END FOOTER --- */
+
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */
