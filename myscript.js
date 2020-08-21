@@ -49,16 +49,16 @@ class TaskList {
   }
 
   //Update function in the class
-  updateTask(id, name, description, assignee, status, date) {
+  updateTask(id, name, assignee, status, description, date) {
     // alert("in class update");
     let updated_id = "";
     for (let i = 0; i < this.tasks.length; i++) {
       if (this.tasks[i].id == id) {
         // alert("update if");
         this.tasks[i].taskName = name;
-        this.tasks[i].description = description;
         this.tasks[i].assignee = assignee;
         this.tasks[i].status = status;
+        this.tasks[i].description = description;
         this.tasks[i].dueDate = date;
         updated_id = id;
       }
@@ -69,9 +69,9 @@ class TaskList {
       if (mynewtasks[i].id == id) {
         //update in local storage
         mynewtasks[i].taskName = name;
-        mynewtasks[i].description = description;
         mynewtasks[i].assignee = assignee;
         mynewtasks[i].status = status;
+        mynewtasks[i].description = description;
         mynewtasks[i].dueDate = date;
         localStorage.setItem("mytasks", JSON.stringify(mynewtasks));
         // alert("edit local");
@@ -103,7 +103,7 @@ class TaskList {
   // Keyword 'displayXXX' to create function
   displayTask() {
     // Use for loop to run through the array
-    for (i = 0; i < this.tasks.length; i++) {
+    for (let i = 0; i < this.tasks.length; i++) {
       // "i" doesn't mean anything, it is just good practise for the variable name in a for loop. Arrays all start at 0 (even though we think of it as book "1").
       // It finishes the loop when gets to the end of the objects held in the array, ie. end of the tasks. And tasks can keep getting added and this loop will run until it goes through all tasks because of the length parameter (this.tasks.length)
       //if you add .xxx, Eg.(this.tasks[i].taskName) it would return all the task names of the task list
@@ -121,20 +121,21 @@ const taskList = new TaskList(); // Creates an instance of class BookList. Sets 
 
 // START: ADD OBJECT TO ARRAY - adding a new task //
 // Display tasks
-function addTaskToWebpage() {
-  let listOfCards = document.querySelector("#listOfCards");
-  const displayHtml = taskList.displayListHtml();
-  let range = document.createRange();
-  let documentFragment = range.createContextualFragment(displayHtml);
-  // attach delete event listener
-  documentFragment
-    .querySelector("button.delete")
-    .addEventListener("click", deleteTask);
-  documentFragment
-    .querySelector("button.edit")
-    .addEventListener("click", openEditModal);
-  listOfCards.appendChild(documentFragment);
-}
+// --> refactored code and removed this
+// function addTaskToWebpage() {
+//   let listOfCards = document.querySelector("#listOfCards");
+//   const displayHtml = taskList.displayListHtml();
+//   let range = document.createRange();
+//   let documentFragment = range.createContextualFragment(displayHtml);
+//   // attach delete event listener
+//   documentFragment
+//     .querySelector("button.delete")
+//     .addEventListener("click", deleteTask);
+//   documentFragment
+//     .querySelector("button.edit")
+//     .addEventListener("click", openEditModal);
+//   listOfCards.appendChild(documentFragment);
+// }
 // END: ADD OBJECT TO ARRAY - adding a new task //
 
 // START: DISPLAY TASKS FROM STORAGE ON WEB PAGE LOAD //
@@ -199,15 +200,16 @@ function openEditModal() {
   // alert(retreiveId);
   document.querySelector("#editTaskId").value = retreiveId;
   var taskArr = JSON.parse(localStorage.getItem("mytasks")) || taskList.tasks;
-  for (i = 0; i <= taskArr.length; i++) {
+  for (let i = 0; i <= taskArr.length; i++) {
     // alert("in for");
     if (taskArr[i].id == retreiveId) {
       // alert("in edit");
       document.querySelector("#editTaskName").value = taskArr[i].taskName;
+      document.querySelector("#editAssignee").value = taskArr[i].assignee;
       document.querySelector("#editTaskDescription").value =
         taskArr[i].description;
-      document.querySelector("#editAssignee").value = taskArr[i].assignee;
-      document.querySelector("#dueDate").value = taskArr[i].dueDate;
+      document.querySelector("#editTaskStatus").value = taskArr[i].status;
+      document.querySelector("#editDueDate").value = taskArr[i].dueDate;
       break;
     }
   }
@@ -267,9 +269,9 @@ btnEditUpdate.onclick = function () {
     let u_id = taskList.updateTask(
       editTaskId.value,
       editTaskName.value,
-      editTaskDescription.value,
       editAssignee.value,
       editTaskStatus.value,
+      editTaskDescription.value,
       editDueDate.value
     );
     $("#modalEdit").modal("hide"); // hides the modal once data filled out
@@ -454,7 +456,7 @@ taskDescription.onchange = function () {
 
 let addTaskBug = document.querySelectorAll("button.addTaskBug");
 // alert(addTaskBug);
-for (i = 0; i < addTaskBug.length; i++) {
+for (let i = 0; i < addTaskBug.length; i++) {
   addTaskBug[i].onclick = function () {
     $("#modalAdd").modal("show"); //function to show the Modal at Add
     clearAllFields();
@@ -474,7 +476,6 @@ function clearAllFields() {
   taskName.style.borderColor = "#ced4da";
   assignee.style.borderColor = "#ced4da";
   taskDescription.style.borderColor = "#ced4da";
-  taskStatus.value = selected;
 }
 
 // END: CLEAR FIELDS //
